@@ -43,30 +43,28 @@ Diana.prototype = {
     },
 
     toggleStreetView: function() {
-        var toggle = panorama.getVisible();
+        var toggle = this.streetview.getVisible();
         if (toggle == false) {
-            panorama.setVisible(true);
+            streetview.setVisible(true);
         } else {
-            panorama.setVisible(false);
+            streetview.setVisible(false);
         }
     },
 
     initStreetView: function() {
-        var panoramaOptions = {
-          position: new google.maps.LatLng(37.774599,-122.42456),
-          pov: {
-            heading: 34,
-            pitch: 10,
-            zoom: 1
-          }
+        var streetviewOptions = {
+            pov: {
+                heading: 34,
+                pitch: 10,
+                zoom: 1
+            }
         };
-        this.panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
-        this.map.setStreetView(this.panorama);
+        this.streetview = new google.maps.StreetViewPanorama(document.getElementById("streetview"), streetviewOptions);
+        this.map.setStreetView(this.streetview);
     },
 
     /**
      * Setup listeners for events and stuff
-     * @TODO: Make routing actually do work
      */
 
     setupListeners: function() {
@@ -81,21 +79,24 @@ Diana.prototype = {
             if (!start || !end) return;
 
             self.calcRoute(start, end);
-            //self.initStreetView();
+            self.initStreetView();
 
         });
     },
 
     setupGoogleMapsListeners: function() {
-        var self = this;
-
         // Update some metrics when route changes.
-        google.maps.event.addListener(this.directionsDisplay, 'routeindex_changed', function() {
-            self.updateRouteSteps();
-            self.calcCrimeCounts();
-        });
-
+        google.maps.event.addListener(this.directionsDisplay, 'routeindex_changed', _.bind(this.updateData, this));
     },
+
+    /**
+     * Update route data, throttled to once every 120ms
+     */
+
+    updateData: _.throttle(function() {
+        this.updateRouteSteps();
+        this.calcCrimeCounts();
+    }, 120),
 
     /**
      * Calculate a route between two points and then display on map
@@ -116,8 +117,8 @@ Diana.prototype = {
         this.directionsService.route(request, _.bind(function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 self.directionsDisplay.setDirections(response);
-                self.updateRouteSteps();
-                self.calcCrimeCounts();
+                // self.updateRouteSteps();
+                // self.calcCrimeCounts();
             }
         }, this));
     },
