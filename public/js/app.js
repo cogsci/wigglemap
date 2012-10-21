@@ -54,12 +54,15 @@ Diana.prototype = {
     },
 
     initStreetView: function() {
+        var firstStep = this.rawSteps[0].start_point;
+
         var streetviewOptions = {
             pov: {
                 heading: 34,
                 pitch: 10,
                 zoom: 1
-            }
+            },
+            position: firstStep
         };
         this.streetview = new google.maps.StreetViewPanorama(document.getElementById("streetview"), streetviewOptions);
         this.map.setStreetView(this.streetview);
@@ -81,8 +84,6 @@ Diana.prototype = {
             if (!start || !end) return;
 
             self.calcRoute(start, end);
-            self.initStreetView();
-
         });
     },
 
@@ -98,6 +99,7 @@ Diana.prototype = {
     updateData: _.throttle(function() {
         this.updateRouteSteps();
         this.calcCrimeCounts();
+        this.initStreetView();
     }, 120),
 
     /**
@@ -119,8 +121,6 @@ Diana.prototype = {
         this.directionsService.route(request, _.bind(function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 self.directionsDisplay.setDirections(response);
-                // self.updateRouteSteps();
-                // self.calcCrimeCounts();
             }
         }, this));
     },
@@ -129,6 +129,8 @@ Diana.prototype = {
      * Store the list of steps concisely; Google gives a push of information we don't want.
      */
     updateRouteSteps: function() {
+        this.rawSteps = this.directionsDisplay.getDirections().routes[0].legs[0].steps;
+
         try {
             var fullSteps = this.directionsDisplay.getDirections().routes[0].legs[0].steps;
             var step;
