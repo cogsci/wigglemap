@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For Diana</title>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/app.js"></script>
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        html { height: 100% }
+        body { height: 100%; margin: 0; padding: 0 }
+        #map-canvas {
+            height: 90%;
+            width: 100%;
+            margin-top: 30px;
+        }
+        input {
+            height: 50px;
+            font-size: 24px
+        }
+        .locations {
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY4i1NNxuNos3bn5kx9_t5-LRtgi7RQ7I&sensor=true"></script>
+    <script type="text/javascript">
+        function initialize() {
+            var mapOptions = {
+                center: new google.maps.LatLng(37.774599,-122.42456),
+                zoom: 14,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        }
+
+        $(function(){
+            $('#submit-button').click(function(){
+                $.ajax('/route', {
+                    data: {
+                        start: $('#start-location').val(),
+                        end: $('#end-location').val()
+                    },
+                    success: function(response){
+                        console.log(response);
+                    },
+                    error: function(){
+                        console.log("No worky");
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body onload="initialize()">
+    <div class="locations">
+        <input type="text" id="start-location" placeholder="Start" />
+        <input type="text" id="end-location" placeholder="End" />
+        <input type="submit" id="submit-button" value="Route me!" />
+    </div>
+    <div id="map-canvas"></div>
+</body>
+</html>
