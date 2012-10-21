@@ -123,7 +123,7 @@ Diana.prototype = {
                 }
             },
             success: function(data) {
-                console.log(data);
+                this.crimes = data;
             }
         });
     }
