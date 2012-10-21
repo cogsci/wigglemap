@@ -3,6 +3,11 @@ Diana = function() {
     this.appUrl = 'http://localhost:4567';
     this.routeSteps = [];
 
+    // google maps likes to trigger an event several times when the route
+    // is changed, and we don't want to make that many calls to the server,
+    // which would make several google api calls, therein.
+    this.loadingCrimesMutex = false;
+
     var mapOptions = {
             center: new google.maps.LatLng(37.774599,-122.42456),
             zoom: 14,
@@ -23,10 +28,19 @@ Diana = function() {
     this.TRAVEL_MODE = google.maps.DirectionsTravelMode.BICYCLING;
 
     this.setupListeners();
+    this.setupGoogleMapsListeners();
 
 };
 
 Diana.prototype = {
+
+    getStartLocation: function() {
+        return $('#start-location').val();
+    },
+
+    getEndLocation: function() {
+        return $('#end-location').val();
+    },
 
     /**
      * Setup listeners for events and stuff
@@ -39,13 +53,24 @@ Diana.prototype = {
         $('#locations').on('submit', function(e) {
             e.preventDefault();
             
-            var start = $('#start-location').val(),
-                end = $('#end-location').val();
+            var start = self.getStartLocation(),
+                end = self.getEndLocation();
 
             if (!start || !end) return;
 
             self.calcRoute(start, end);
         });
+    },
+
+    setupGoogleMapsListeners: function() {
+        var self = this;
+
+        // Update some metrics when route changes.
+        google.maps.event.addListener(this.directionsDisplay, 'routeindex_changed', function() {
+            self.updateRouteSteps();
+            self.calcCrimeCounts();
+        });
+
     },
 
     /**
@@ -56,6 +81,8 @@ Diana.prototype = {
      */
 
     calcRoute: function(start, end) {
+        var self = this;
+
         var request = {
             origin: start,
             destination: end,
@@ -64,10 +91,9 @@ Diana.prototype = {
 
         this.directionsService.route(request, _.bind(function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
-                this.directionsDisplay.setDirections(response);
-                console.log(response);
-                resp = response;
-                this.setRouteSteps(response.routes[0].legs[0].steps);
+                self.directionsDisplay.setDirections(response);
+                self.updateRouteSteps();
+                self.calcCrimeCounts();
             }
         }, this));
     },
@@ -75,27 +101,39 @@ Diana.prototype = {
     /**
      * Store the list of steps concisely; Google gives a push of information we don't want.
      */
-    setRouteSteps: function(fullSteps) {
-        var step;
-        for (i in fullSteps) {
-            step = fullSteps[i];
-            this.routeSteps.push({
-                start_location: {
-                    lat: step.start_location.Xa,
-                    lon: step.start_location.Ya
-                },
-                end_location: {
-                    lat: step.end_location.Xa,
-                    lon: step.end_location.Ya
-                }
-            });
+    updateRouteSteps: function() {
+        try {
+            var fullSteps = this.directionsDisplay.getDirections().routes[0].legs[0].steps;
+            var step;
+            var routeSteps = [];
+            for (i in fullSteps) {
+                step = fullSteps[i];
+                routeSteps.push({
+                    start_location: {
+                        lat: step.start_location.Xa,
+                        lon: step.start_location.Ya
+                    },
+                    end_location: {
+                        lat: step.end_location.Xa,
+                        lon: step.end_location.Ya
+                    }
+                });
+            }
+            this.routeSteps = routeSteps;
+        } catch (err) {
+            // likely an NPE
+            console.log(err);
         }
     },
 
     /**
      * Get a list of crime counts associated with each step in the route.
      */
-    getCrimeCounts: function() {
+    calcCrimeCounts: function() {
+        var self = this;
+        if (this.loadingCrimesMutex) return;
+        console.log('Recalculating crime rate...');
+        this.loadingCrimesMutex = true;
         var routeStepsStr = JSON.stringify(this.routeSteps);
         $.ajax({
             type: 'POST',
@@ -105,7 +143,11 @@ Diana.prototype = {
             mimeType: "application/json;charset=UTF-8",
             context: this,
             success: function(data) {
-                this.crimes = data;
+                self.loadingCrimesMutex = false;
+                self.crimes = data;
+            },
+            fail: function() {
+                self.loadingCrimesMutex = false;
             }
         });
     }

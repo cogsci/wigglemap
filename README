@@ -7,4 +7,4 @@ To begin:
 
 
 Dependencies: (todo: setup a Gemfile)
-- geokit, mongo, mongoid, json, bson_ext, sinatra
+- geokit, mongo, mongoid, json, bson_ext, sinatra, redis
