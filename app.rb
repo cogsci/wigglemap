@@ -5,6 +5,10 @@ require 'mongoid'
 
 # Add directories to the load path
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'models'))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'utils'))
+
+# Not sure where the ideal place to put this is.
+require 'crimes'
 
 # Google Maps API configuration
 Geokit::Geocoders::google = 'AIzaSyB7TqXugzqy78MGZeCajJKldKeJd8CBj9I'
@@ -16,11 +20,10 @@ Mongoid.load!("config/mongoid.yml", :production)
 # TODO: haven't figured out the format from the frontend. So this
 # is temporary.
 post '/get_crime_counts' do
-	require './utils/crimes' # probably not ideal...?
-	content_type :json
-	params = request.env['rack.request.query_hash']
-	route_steps = JSON.parse(params[:steps])
-	get_crime_counts(route_steps).to_json
+    content_type :JSON 
+    steps = params['steps']
+    route_steps = JSON.parse(steps)
+    get_crime_counts(route_steps).to_json
 end
 
 get '/route' do
@@ -28,9 +31,5 @@ get '/route' do
 end
 
 get '/score' do
-
-end
-
-def get_route_from_google do
 
 end
