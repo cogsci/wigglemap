@@ -9,13 +9,13 @@ Diana = function() {
     this.loadingCrimesMutex = false;
 
     var mapOptions = {
-            center: new google.maps.LatLng(37.774599,-122.42456),
-            zoom: 14,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            streetViewControl: true
-        };
+        center: new google.maps.LatLng(37.774599,-122.42456),
+        zoom: 14,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        streetViewControl: true
+    };
 
-        this.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+    this.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
     this.directionsDisplay = new google.maps.DirectionsRenderer({
         draggable: true
