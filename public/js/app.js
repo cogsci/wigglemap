@@ -53,18 +53,6 @@ Diana.prototype = {
         }
     },
 
-    initStreetView: function() {
-        var streetviewOptions = {
-            pov: {
-                heading: 34,
-                pitch: 10,
-                zoom: 1
-            }
-        };
-        this.streetview = new google.maps.StreetViewPanorama(document.getElementById("streetview"), streetviewOptions);
-        this.map.setStreetView(this.streetview);
-    },
-
     /**
      * Setup listeners for events and stuff
      */
@@ -81,7 +69,6 @@ Diana.prototype = {
             if (!start || !end) return;
 
             self.calcRoute(start, end);
-            self.initStreetView();
 
         });
     },
@@ -119,8 +106,6 @@ Diana.prototype = {
         this.directionsService.route(request, _.bind(function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 self.directionsDisplay.setDirections(response);
-                // self.updateRouteSteps();
-                // self.calcCrimeCounts();
             }
         }, this));
     },
