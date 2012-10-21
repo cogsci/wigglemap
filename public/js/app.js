@@ -81,7 +81,7 @@ Diana.prototype = {
             if (!start || !end) return;
 
             self.calcRoute(start, end);
-            self.initStreetView();
+//            self.initStreetView();
 
         });
     },
@@ -98,6 +98,7 @@ Diana.prototype = {
     updateData: _.throttle(function() {
         this.updateRouteSteps();
         this.calcCrimeCounts();
+        this.calcAccidentCounts();
     }, 120),
 
     /**
@@ -159,6 +160,7 @@ Diana.prototype = {
     calcCrimeCounts: function() {
         var self = this;
         this.serviceCall('get_crime_counts', {steps: JSON.stringify(self.routeSteps)}, function(data) {
+            console.log('crimes: ', data);
             self.loadingCrimesMutex = false;
             self.crimes = data;
         }, {mimeType: 'application/json;charset=UTF-8'});
@@ -169,6 +171,14 @@ Diana.prototype = {
         var self = this;
         this.serviceCall('get_elevations_list', {steps: JSON.stringify(self.routeSteps)}, function(data) {
             console.log('elevations: ', data);
+            self.elevations = data;
+        }, {mimeType: 'application/json;charset=UTF-8'});
+    },
+
+    calcAccidentCounts: function() {
+        var self = this;
+        this.serviceCall('get_accident_counts', {steps: JSON.stringify(self.routeSteps)}, function(data) {
+            console.log('accidents: ', data);
             self.elevations = data;
         }, {mimeType: 'application/json;charset=UTF-8'});
     },
