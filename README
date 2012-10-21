@@ -1,7 +1,10 @@
 Repo for reroute hackathon: http://hattery.com/reroute/
 
 To begin:
-1. $ gem install sinatra
+1. Install dependencies (see below)
 2. ruby app.rb
 3. http://localhost:4567
 
+
+Dependencies: (todo: setup a Gemfile)
+- geokit, mongo, mongoid, json, bson_ext, sinatra

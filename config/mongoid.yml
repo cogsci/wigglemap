@@ -1,0 +1,8 @@
+production:
+  sessions:
+    default:
+      hosts:
+        - ds029797.mongolab.com:29797
+      database: reroutesf
+      username: reroutesf
+      password: reroutesf
