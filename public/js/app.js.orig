@@ -88,7 +88,16 @@ Diana.prototype = {
 
     setupGoogleMapsListeners: function() {
         // Update some metrics when route changes.
+<<<<<<< HEAD
         google.maps.event.addListener(this.directionsDisplay, 'routeindex_changed', _.bind(this.updateData, this));
+=======
+        google.maps.event.addListener(this.directionsDisplay, 'routeindex_changed', function() {
+            self.updateRouteSteps();
+            self.calcCrimeCounts();
+            self.calcCrimeCounts();
+        });
+
+>>>>>>> 8c1bf3b8a2cafe427694a56584485bd461ea63b7
     },
 
     /**
@@ -119,8 +128,14 @@ Diana.prototype = {
         this.directionsService.route(request, _.bind(function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 self.directionsDisplay.setDirections(response);
+<<<<<<< HEAD
                 // self.updateRouteSteps();
                 // self.calcCrimeCounts();
+=======
+                self.updateRouteSteps();
+                self.calcCrimeCounts();
+                //self.calcCrimeCounts();
+>>>>>>> 8c1bf3b8a2cafe427694a56584485bd461ea63b7
             }
         }, this));
     },
