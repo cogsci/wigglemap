@@ -1,1 +1,7 @@
 Repo for reroute hackathon: http://hattery.com/reroute/
+
+To begin:
+1. $ gem install sinatra
+2. ruby app.rb
+3. http://localhost:4567
+
