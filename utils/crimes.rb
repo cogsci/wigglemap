@@ -1,35 +1,9 @@
-require 'json'
 require 'crime'
-require 'geokit'
-require 'redis'
-
-SLEEP_TIME = 1.0 / 10.0
-
-# Returns the block of the given street number
-# 123 => 100, 50 => 0, 1234 => 1000
-def get_block(street_number)
-    if street_number < 100
-        return 0
-    else
-        rank = street_number.to_s.size
-        return (street_number / rank) * rank
-    end
-end
+require 'locations'
 
 # Returns the number of crime incidents for each step in the route
 # route_steps should be (at least) of the form [ {:longitude:} ]
 def get_crime_counts(route_steps)
-
-    redis = nil
-    cached_start_location = nil
-    cached_end_location = nil
-
-    begin 
-        redis = Redis.new
-    rescue Exception => e
-        print "redis-server is not running\n"
-        # redis-server probabably isn't running
-    end
 
     # A list that represents the number of crime incidents corresponding
     # to each step in the route.
@@ -46,45 +20,10 @@ def get_crime_counts(route_steps)
         end_lat = end_location_coords['lat']
         end_lon = end_location_coords['lon']
 
-        unless redis.nil?
-            cached_result = redis.get(start_location_coords.to_s)
-            unless cached_result.nil?
-                begin
-                    cached_start_location = JSON.parse(cached_result)
-                rescue
-                    # invalid json
-                end
-            end
-            cached_result = redis.get(end_location_coords.to_s)
-            unless cached_result.nil?
-                begin
-                    cached_end_location = JSON.parse(cached_result)
-                rescue
-                    # invalid json
-                end
-            end
-        end
-
         # 1. Get street addresses and prepare it for db comparison
 
-        if cached_start_location.nil?
-            start_location = Geokit::Geocoders::GoogleGeocoder.reverse_geocode(start_lat.to_s + "," + start_lon.to_s).hash
-            sleep(SLEEP_TIME)
-        else
-            start_location = cached_start_location
-        end
-
-        if cached_end_location.nil?
-            end_location = Geokit::Geocoders::GoogleGeocoder.reverse_geocode(end_lat.to_s + "," + end_lon.to_s).hash
-        else
-            end_location = cached_end_location
-        end
-
-        # If redis is initialized, cache google results
-        unless redis.nil?
-            redis.set(start_location_coords.to_s, start_location.to_json)
-            redis.set(end_location_coords.to_s, end_location.to_json)
-        end
+        start_location = get_address(start_lat, start_lon)
+        end_location = get_address(end_lat, end_lon)
 
         # Need these flags as we will need to parse them differently if we don't have
         # the street address
