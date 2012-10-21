@@ -51,7 +51,7 @@ def get_crime_counts(route_steps)
                 # We don't have street number so make start block zero. It sucks, but it'll have to do (for now)
                 start_street_number = 0
                 start_block = 0
-                street_name = start_address[/[^A-Za-z\s]+/].strip.upcase # "Market St & Stockton St" => "MARKET ST"
+                street_name = start_address[/^[A-Za-z\s]+/].strip.upcase # "Market St & Stockton St" => "MARKET ST"
             else
                 start_street_number = start_address[/^\d+/].to_i # "100 Market St" => 100
                 start_block = get_block(start_street_number)
