@@ -6,7 +6,7 @@ Diana = function() {
     // google maps likes to trigger an event several times when the route
     // is changed, and we don't want to make that many calls to the server,
     // which would make several google api calls, therein.
-    this.loadingCrimesMutex = false;
+    this.mutei = {};
 
     var mapOptions = {
         center: new google.maps.LatLng(37.774599,-122.42456),
@@ -42,6 +42,28 @@ Diana.prototype = {
         return $('#end-location').val();
     },
 
+    toggleStreetView: function() {
+        var toggle = panorama.getVisible();
+        if (toggle == false) {
+            panorama.setVisible(true);
+        } else {
+            panorama.setVisible(false);
+        }
+    },
+
+    initStreetView: function() {
+        var panoramaOptions = {
+          position: new google.maps.LatLng(37.774599,-122.42456),
+          pov: {
+            heading: 34,
+            pitch: 10,
+            zoom: 1
+          }
+        };
+        this.panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
+        this.map.setStreetView(this.panorama);
+    },
+
     /**
      * Setup listeners for events and stuff
      * @TODO: Make routing actually do work
@@ -59,6 +81,8 @@ Diana.prototype = {
             if (!start || !end) return;
 
             self.calcRoute(start, end);
+            //self.initStreetView();
+
         });
     },
 
@@ -127,29 +151,55 @@ Diana.prototype = {
     },
 
     /**
-     * Get a list of crime counts associated with each step in the route.
+     * Calculate a list of crime counts associated with each step in the route.
      */
     calcCrimeCounts: function() {
         var self = this;
-        if (this.loadingCrimesMutex) return;
-        console.log('Recalculating crime rate...');
-        this.loadingCrimesMutex = true;
-        var routeStepsStr = JSON.stringify(this.routeSteps);
-        $.ajax({
+        this.serviceCall('get_crime_counts', {steps: JSON.stringify(self.routeSteps)}, function(data) {
+            self.loadingCrimesMutex = false;
+            self.crimes = data;
+            console.log('Updated crime data');
+        }, {mimeType: 'application/json;charset=UTF-8'});
+    },
+
+    /* Calculate the number of feet needed to climb from point A to point B */
+    calcClimb: function() {
+        var numSteps = this.routeSteps.length;
+        this.serviceCall('get_climb', {
+            start_lat: this.routeSteps[0].start_location.lat,
+            start_lon: this.routeSteps[0].start_location.lon,
+            end_lat: this.routeSteps[numSteps - 1].end_location.lat,
+            end_lon: this.routeSteps[numSteps - 1].end_location.lon
+        }, function(data) {
+            console.log('climb: ', data);
+        });
+    },
+
+    serviceCall: function(call, data, successCallback, ajaxOptions) {
+        if (this.mutei[call] == 1) return;
+        console.log('Making service call: ', call);
+        this.mutei[call] = 1;
+        var options = {
             type: 'POST',
-            url: this.appUrl + '/get_crime_counts',
-            data: {steps: routeStepsStr},
-            dataType: 'json',
-            mimeType: "application/json;charset=UTF-8",
+            url: this.appUrl + '/' + call,
             context: this,
-            success: function(data) {
-                self.loadingCrimesMutex = false;
-                self.crimes = data;
+            dataType: 'json',
+            data: data,
+            success: function(resp) {
+                console.log('Done service call: ', call);
+                this.mutei[call] = 0;
+                successCallback(resp);
             },
             fail: function() {
-                self.loadingCrimesMutex = false;
+                this.mutei[call] = 0;
             }
-        });
+        };
+        if (ajaxOptions) {
+            ajaxOptions = $.extend({}, options, ajaxOptions);
+        } else {
+            ajaxOptions = options;
+        }
+        $.ajax(ajaxOptions);
     }
 
 
