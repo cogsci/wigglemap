@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'sinatra'
 
 get '/some_api_call' do
