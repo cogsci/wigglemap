@@ -108,8 +108,6 @@ Diana.prototype = {
      * Get a list of crime counts associated with each step in the route.
      */
     getCrimeCounts: function() {
-        console.log(this.routeSteps);
-        console.log(JSON.stringify(this.routeSteps));
         var routeStepsStr = JSON.stringify(this.routeSteps);
         $.ajax({
             type: 'POST',
