@@ -6,48 +6,31 @@
     <link rel="stylesheet/less" type="text/css" href="less/styles.less">
     <script src="js/lib/less/less.min.js" type="text/javascript"></script>
     <script src="js/jquery.js"></script>
+    <script src="js/lib/lodash/lodash.min.js"></script>
     <script src="js/app.js"></script>
+
+    <script type="text/javascript">
+        // function initialize() {
+        //     app.initialize();
+        //     console.log('init');
+        // };
+    </script>
 
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY4i1NNxuNos3bn5kx9_t5-LRtgi7RQ7I&sensor=true"></script>
-    <script type="text/javascript">
-        function initialize() {
-            var mapOptions = {
-                center: new google.maps.LatLng(37.774599,-122.42456),
-                zoom: 14,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-        }
-
-        $(function(){
-            $('#submit-button').click(function(e){
-                e.preventDefault();
-                
-                $.ajax('/route', {
-                    data: {
-                        start: $('#start-location').val(),
-                        end: $('#end-location').val()
-                    },
-                    success: function(response){
-                        console.log(response);
-                    },
-                    error: function(){
-                        console.log("No worky");
-                    }
-                });
-            });
-        });
-    </script>
 </head>
 <body onload="initialize()" class="row-fluid">
-    <form class="locations form-inline span12">
-        <label for="start-location">A</label>
-        <input type="text" id="start-location" name="start-location" placeholder="Start" />
+    <form id="locations" class="locations form-inline span12">
+        <div class="input-prepend">
+            <span class="add-on">A</span>
+            <input type="text" id="start-location" name="start-location" value="hayes valley, san francisco" placeholder="Start" />
+        </div>
 
-        <label for="end-location">B</label>
-        <input type="text" id="end-location" name="start-location" placeholder="End" />
+        <div class="input-prepend">
+            <span class="add-on">B</span>
+            <input type="text" id="end-location" name="end-location" value="caltrain, san francisco" placeholder="End" />
+        </div>
 
         <input type="submit" id="submit-button" class="btn btn-primary" value="Route me!" />
     </form>
