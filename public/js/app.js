@@ -218,6 +218,22 @@ Diana.prototype = {
         $.ajax(ajaxOptions).fail(function() {
             this.mutei[call] = 0;
         });
+    },
+
+    getSafetyRating: function() {
+        var numSegments = 0;
+        var numWithIncidents = 0;
+        var numWithManyIncidents = 0;
+        for (var i in this.crimes) {
+            var num = this.crimes[i];
+            if (num > 5) {
+                numWithManyIncidents += 1;
+            } else if (num > 0) {
+                numWithIncidents += 1;
+            }
+            numSegments++;
+        }
+        return 100 - 100*(0.7*numWithManyIncidents+0.3*numWithIncidents)/numSegments;
     }
 
 
