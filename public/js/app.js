@@ -45,18 +45,6 @@ Diana.prototype = {
             if (!start || !end) return;
 
             self.calcRoute(start, end);
-            // $.ajax('/route', {
-            //     data: {
-            //         start: start,
-            //         end: end
-            //     },
-            //     success: function(response){
-            //         console.log(response);
-            //     },
-            //     error: function(){
-            //         console.log("No worky");
-            //     }
-            // });
         });
     },
 
@@ -65,7 +53,6 @@ Diana.prototype = {
      *
      * @param {LatLng} start
      * @param {LatLng} end
-     * @returns DirectionsRenderer
      */
 
     calcRoute: function(start, end) {
@@ -115,12 +102,8 @@ Diana.prototype = {
             url: this.appUrl + '/get_crime_counts',
             data: {steps: routeStepsStr},
             dataType: 'json',
-            beforeSend: function(x) {
-                // So we can pass in JSON-object
-                if (x && x.overrideMimeType) {
-                    x.overrideMimeType("application/json;charset=UTF-8");
-                }
-            },
+            mimeType: "application/json;charset=UTF-8",
+            context: this,
             success: function(data) {
                 this.crimes = data;
             }
