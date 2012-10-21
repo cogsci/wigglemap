@@ -2,6 +2,8 @@ Diana = function() {
 
     this.appUrl = 'http://localhost:4567';
     this.routeSteps = [];
+    this.crimes = [];
+    this.elevations = [];
 
     // google maps likes to trigger an event several times when the route
     // is changed, and we don't want to make that many calls to the server,
@@ -93,6 +95,7 @@ Diana.prototype = {
         google.maps.event.addListener(this.directionsDisplay, 'routeindex_changed', function() {
             self.updateRouteSteps();
             self.calcCrimeCounts();
+            self.calcCrimeCounts();
         });
 
     },
@@ -118,6 +121,7 @@ Diana.prototype = {
                 self.directionsDisplay.setDirections(response);
                 self.updateRouteSteps();
                 self.calcCrimeCounts();
+                //self.calcCrimeCounts();
             }
         }, this));
     },
@@ -158,21 +162,16 @@ Diana.prototype = {
         this.serviceCall('get_crime_counts', {steps: JSON.stringify(self.routeSteps)}, function(data) {
             self.loadingCrimesMutex = false;
             self.crimes = data;
-            console.log('Updated crime data');
         }, {mimeType: 'application/json;charset=UTF-8'});
     },
 
     /* Calculate the number of feet needed to climb from point A to point B */
-    calcClimb: function() {
-        var numSteps = this.routeSteps.length;
-        this.serviceCall('get_climb', {
-            start_lat: this.routeSteps[0].start_location.lat,
-            start_lon: this.routeSteps[0].start_location.lon,
-            end_lat: this.routeSteps[numSteps - 1].end_location.lat,
-            end_lon: this.routeSteps[numSteps - 1].end_location.lon
-        }, function(data) {
-            console.log('climb: ', data);
-        });
+    calcElevations: function() {
+        var self = this;
+        this.serviceCall('get_elevations_list', {steps: JSON.stringify(self.routeSteps)}, function(data) {
+            console.log('elevations: ', data);
+            self.elevations = data;
+        }, {mimeType: 'application/json;charset=UTF-8'});
     },
 
     serviceCall: function(call, data, successCallback, ajaxOptions) {
@@ -189,9 +188,6 @@ Diana.prototype = {
                 console.log('Done service call: ', call);
                 this.mutei[call] = 0;
                 successCallback(resp);
-            },
-            fail: function() {
-                this.mutei[call] = 0;
             }
         };
         if (ajaxOptions) {
@@ -199,7 +195,9 @@ Diana.prototype = {
         } else {
             ajaxOptions = options;
         }
-        $.ajax(ajaxOptions);
+        $.ajax(ajaxOptions).fail(function() {
+            this.mutei[call] = 0;
+        });
     }
 
 
