@@ -87,7 +87,19 @@ Diana.prototype = {
         $('#prev').on('click', function(e) {
             // Go to prev vertex
             routeHelper.jumpToPrevVertex();
-        });        
+        });
+
+        $('#play').on('click', function(e) {
+            var $button = $(e.currentTarget);
+
+            if (routeHelper.playing) {
+                routeHelper.stop();
+                $button.text('Play');
+            } else {
+                routeHelper.play();
+                $button.text('Stop');
+            }
+        });
     },
 
     setupGoogleMapsListeners: function() {

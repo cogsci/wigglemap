@@ -121,18 +121,32 @@ var routeHelper = {
        //     moveCar();
        //   }
        // });
+
+        return nextVertexId;
      },
 
      jumpToNextVertex: function() {
         var len = diana.overviewPath.length;
-        if (nextVertexId > len) return;
+        if (nextVertexId > len) return false;
         this.jumpToVertex(nextVertexId);
      },
 
      jumpToPrevVertex: function() {
-        if (nextVertexId == 1) return;
+        if (nextVertexId == 1) return false;
         this.jumpToVertex(nextVertexId - 2); 
-     },     
+     },
+
+     play: function() {
+        this.playing = setInterval(function() {
+            if (routeHelper.jumpToNextVertex() == false) {
+                routeHelper.stop();
+            }
+        }, 1800);
+     },
+
+     stop: function() {
+        clearInterval(routeHelper.playing);
+     },
 
     /**
      * Called by the panorama's initialized event handler in
