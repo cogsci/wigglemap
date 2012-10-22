@@ -99,7 +99,9 @@ Diana.prototype = {
     updateData: _.throttle(function() {
         this.updateRouteSteps();
         this.calcCrimeCounts();
-        this.initStreetView();
+        this.calcAccidentCounts();
+        this.insertProgressBar();
+//        this.initStreetView();
     }, 120),
 
     /**
@@ -161,8 +163,10 @@ Diana.prototype = {
     calcCrimeCounts: function() {
         var self = this;
         this.serviceCall('get_crime_counts', {steps: JSON.stringify(self.routeSteps)}, function(data) {
+            console.log('crime: ', data);
             self.loadingCrimesMutex = false;
             self.crimes = data;
+            self.insertProgressBar();
         }, {mimeType: 'application/json;charset=UTF-8'});
     },
 
@@ -179,8 +183,36 @@ Diana.prototype = {
         var self = this;
         this.serviceCall('get_accident_counts', {steps: JSON.stringify(self.routeSteps)}, function(data) {
             console.log('accidents: ', data);
-            self.elevations = data;
+            self.accidents = data;
+            self.insertProgressBar();
         }, {mimeType: 'application/json;charset=UTF-8'});
+    },
+
+    insertProgressBar: function() {
+      var self = this;
+      var i;
+      var tds = "";
+      if (!self.accidents) {
+        return
+      }
+
+      console.log("progress: ", self.accidents);
+      console.log("progress: ", self.crimes);
+      for (i = 0; i < self.accidents.length; i++) {
+        $("#progress_bar").html("");
+        var color;
+        if (self.accidents[i] == 0)
+          color = "green"
+        else if (self.accidents[i] < 5)
+          color = "yellow"
+        else 
+          color = "red"
+        tds += "<td class='"+color+"'></td>";
+      }
+      var table = "<table><tr>"+tds+"</tr></table>"
+      console.log("table: ", table);
+
+      $("#progress_bar").append(table);
     },
 
     serviceCall: function(call, data, successCallback, ajaxOptions) {
