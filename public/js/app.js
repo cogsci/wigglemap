@@ -121,7 +121,10 @@ Diana.prototype = {
         // Simplified route steps for getting crime data, etc.
         this.updateRouteSteps();
         this.calcCrimeCounts();
+        this.calcAccidentCounts();
+        this.insertProgressBar();
         // Init the street view and set to first point
+        this.calcElevations();
         this.initStreetView();
     }, 120),
 
@@ -184,8 +187,10 @@ Diana.prototype = {
     calcCrimeCounts: function() {
         var self = this;
         this.serviceCall('get_crime_counts', {steps: JSON.stringify(self.routeSteps)}, function(data) {
+            console.log('crime: ', data);
             self.loadingCrimesMutex = false;
             self.crimes = data;
+            self.updateSafetyRating();
         }, {mimeType: 'application/json;charset=UTF-8'});
     },
 
@@ -202,8 +207,36 @@ Diana.prototype = {
         var self = this;
         this.serviceCall('get_accident_counts', {steps: JSON.stringify(self.routeSteps)}, function(data) {
             console.log('accidents: ', data);
-            self.elevations = data;
+            self.accidents = data;
+            self.insertProgressBar();
         }, {mimeType: 'application/json;charset=UTF-8'});
+    },
+
+    insertProgressBar: function() {
+      var self = this;
+      var i;
+      var tds = "";
+      if (!self.accidents) {
+        return
+      }
+
+      console.log("progress: ", self.accidents);
+      console.log("progress: ", self.crimes);
+      for (i = 0; i < self.accidents.length; i++) {
+        $("#progress_bar").html("");
+        var color;
+        if (self.accidents[i] == 0)
+          color = "green"
+        else if (self.accidents[i] < 5)
+          color = "yellow"
+        else 
+          color = "red"
+        tds += "<td class='"+color+"'></td>";
+      }
+      var table = "<table><tr>"+tds+"</tr></table>"
+      console.log("table: ", table);
+
+      $("#progress_bar").append(table);
     },
 
     serviceCall: function(call, data, successCallback, ajaxOptions) {
@@ -230,7 +263,34 @@ Diana.prototype = {
         $.ajax(ajaxOptions).fail(function() {
             this.mutei[call] = 0;
         });
-    }
+    },
 
+    _getSafetyRating: function() {
+        var numSegments = 0;
+        var numWithIncidents = 0;
+        var numWithManyIncidents = 0;
+        for (var i in this.crimes) {
+            var num = this.crimes[i];
+            if (num > 5) {
+                numWithManyIncidents += 1;
+            } else if (num > 0) {
+                numWithIncidents += 1;
+            }
+            numSegments++;
+        }
+        return Math.round(100 - 100*(0.7*numWithManyIncidents+0.3*numWithIncidents) / numSegments);
+    },
+
+    updateSafetyRating: function() {
+        var rating = this._getSafetyRating();
+        var ratingCssClass = 'success';
+        if (rating < 75) {
+            ratingCssClass = 'warning';
+        }
+        if (rating < 50) {
+            ratingCssClass = 'important';
+        }
+        $('#safety').html('<div class="label label-' + ratingCssClass + '">' +rating + '% Safety Rating</div>');
+    }
 
 };
