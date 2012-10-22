@@ -182,6 +182,14 @@ Diana.prototype = {
         }, {mimeType: 'application/json;charset=UTF-8'});
     },
 
+    calcAccidentCounts: function() {
+        var self = this;
+        this.serviceCall('get_accident_counts', {steps: JSON.stringify(self.routeSteps)}, function(data) {
+            console.log('accidents: ', data);
+            self.elevations = data;
+        }, {mimeType: 'application/json;charset=UTF-8'});
+    },
+
     serviceCall: function(call, data, successCallback, ajaxOptions) {
         if (this.mutei[call] == 1) return;
         console.log('Making service call: ', call);
