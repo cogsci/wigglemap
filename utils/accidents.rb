@@ -2,7 +2,6 @@ require 'nokogiri'
 require 'rest-client'
 require 'json'
 require 'geocoder'
-require 'ruby-debug'
 require 'mongo'
 require 'geokit'
 
