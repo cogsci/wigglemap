@@ -146,6 +146,7 @@ var routeHelper = {
      },
 
      play: function() {
+        diana.map.setZoom(16);
         this.playing = setInterval(function() {
             if (routeHelper.jumpToNextVertex() == false) {
                 routeHelper.stop();
