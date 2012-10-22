@@ -110,6 +110,7 @@ Diana.prototype = {
         this.updateRouteSteps();
         this.calcCrimeCounts();
         // Init the street view and set to first point
+        this.calcElevations();
         this.initStreetView();
     }, 120),
 
@@ -174,6 +175,7 @@ Diana.prototype = {
         this.serviceCall('get_crime_counts', {steps: JSON.stringify(self.routeSteps)}, function(data) {
             self.loadingCrimesMutex = false;
             self.crimes = data;
+            self.updateSafetyRating();
         }, {mimeType: 'application/json;charset=UTF-8'});
     },
 
@@ -220,7 +222,7 @@ Diana.prototype = {
         });
     },
 
-    getSafetyRating: function() {
+    _getSafetyRating: function() {
         var numSegments = 0;
         var numWithIncidents = 0;
         var numWithManyIncidents = 0;
@@ -233,8 +235,19 @@ Diana.prototype = {
             }
             numSegments++;
         }
-        return 100 - 100*(0.7*numWithManyIncidents+0.3*numWithIncidents)/numSegments;
-    }
+        return Math.round(100 - 100*(0.7*numWithManyIncidents+0.3*numWithIncidents) / numSegments);
+    },
 
+    updateSafetyRating: function() {
+        var rating = this._getSafetyRating();
+        var ratingCssClass = 'success';
+        if (rating < 75) {
+            ratingCssClass = 'warning';
+        }
+        if (rating < 50) {
+            ratingCssClass = 'important';
+        }
+        $('#safety').html('<div class="label label-' + ratingCssClass + '">' +rating + '% Safety Rating</div>');
+    }
 
 };
