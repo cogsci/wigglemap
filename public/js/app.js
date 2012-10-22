@@ -112,7 +112,7 @@ Diana.prototype = {
      */
 
     updateData: _.throttle(function() {
-        var currentRoute = this.directionsDisplay.getDirections();
+        var currentRoute = this.currentRoute = this.directionsDisplay.getDirections();
 
         this.overviewPath = currentRoute.routes[0].overview_path;
         this.overviewPoly = google.maps.geometry.encoding.decodePath(currentRoute.routes[0].overview_polyline.points);

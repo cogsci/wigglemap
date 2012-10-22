@@ -38,22 +38,27 @@
 
         <input type="submit" id="submit-button" class="btn btn-primary" value="Route me!" />
     </form>
-    <div id="progress_bar" class="progress-bar"></div>    
+
     <div id="streetview" class="streetview gmap"></div>
     <div id="map_canvas" class="map-canvas gmap"></div>
 
     <div class="controls">
-        <a id="prev" class="btn">
-            Prev
-        </a>
+        <div class="play-controls">
+            <a id="play" class="btn btn-primary btn-large">
+                Play
+            </a>
+            <br />
 
-        <a id="next" class="btn">
-            Next
-        </a>
+            <a id="prev" class="btn">
+                Prev
+            </a>
 
-        <a id="play" class="btn">
-            Play
-        </a>
+            <a id="next" class="btn">
+                Next
+            </a>
+        </div>
+
+        <div id="progress_bar" class="progress-bar"></div>
     </div>
 
     
