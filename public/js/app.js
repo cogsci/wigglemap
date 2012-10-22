@@ -54,7 +54,7 @@ Diana.prototype = {
     },
 
     initStreetView: function() {
-        var firstStep = this.rawSteps[0].start_point;
+        var firstStep = this.overviewPath[0];
 
         var streetviewOptions = {
             pov: {
@@ -64,6 +64,7 @@ Diana.prototype = {
             },
             position: firstStep
         };
+        
         this.streetview = new google.maps.StreetViewPanorama(document.getElementById("streetview"), streetviewOptions);
         this.map.setStreetView(this.streetview);
     },
@@ -97,8 +98,14 @@ Diana.prototype = {
      */
 
     updateData: _.throttle(function() {
+        var currentRoute = this.directionsDisplay.getDirections();
+
+        this.overviewPath = currentRoute.routes[0].overview_path;
+
+        // Simplified route steps for getting crime data, etc.
         this.updateRouteSteps();
         this.calcCrimeCounts();
+        // Init the street view and set to first point
         this.initStreetView();
     }, 120),
 

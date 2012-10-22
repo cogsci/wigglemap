@@ -22,7 +22,8 @@ _.mixin({
         var x = Math.cos(lat1)*Math.sin(lat2) -
                 Math.sin(lat1)*Math.cos(lat2)*Math.cos(dLon);
         return _.toBrng(Math.atan2(y, x));
-     }
+     },
+     
     /**
      * Convert an angle in degrees to radians
      */
