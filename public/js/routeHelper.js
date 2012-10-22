@@ -27,6 +27,42 @@
  */
 
 var routeHelper = {
+    /**
+     * Build the vertices, vertexMap, stepToVertex, and stepMap
+     * arrays from the vertices of the route polyline.
+     * @param {GPolyline} path The route polyline to process
+     */
+    collapseVertices: function(path) {
+      vertices = new Array();
+      vertexMap = new Array(path.getVertexCount());
+
+      vertices.push(path.getVertex(0));
+      vertexMap[0] = 0;
+
+      /* Copy vertices from the polyline to the vertices array
+       * skipping any duplicates. Build the vertexMap as we go along */
+      for (var i = 1; i < path.getVertexCount(); i++) {
+        if (! path.getVertex(i).equals(vertices[vertices.length - 1])) {
+          vertices.push(path.getVertex(i));
+        }
+        vertexMap[i] = vertices.length - 1;
+      }
+
+      stepToVertex = new Array(route.getNumSteps());
+      stepMap      = new Array(vertices.length);
+
+      for (var i = 0; i < route.getNumSteps(); i++) {
+        stepToVertex[i] = vertexMap[route.getStep(i).getPolylineIndex()];
+      }
+
+      var step = 0;
+      for (var i = 0; i < vertices.length; i++) {
+        if (stepToVertex[step + 1] == i) {
+          step++;
+        }
+        stepMap[i] = step;
+      }
+    },
 
     /**
      * Get the direction to head in from a particular vertex
@@ -86,6 +122,17 @@ var routeHelper = {
        //   }
        // });
      },
+
+     jumpToNextVertex: function() {
+        var len = diana.overviewPath.length;
+        if (nextVertexId > len) return;
+        this.jumpToVertex(nextVertexId);
+     },
+
+     jumpToPrevVertex: function() {
+        if (nextVertexId == 1) return;
+        this.jumpToVertex(nextVertexId - 2); 
+     },     
 
     /**
      * Called by the panorama's initialized event handler in

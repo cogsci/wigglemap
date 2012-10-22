@@ -55,18 +55,10 @@ Diana.prototype = {
 
     initStreetView: function() {
         var firstStep = this.overviewPath[0];
-
-        var streetviewOptions = {
-            pov: {
-                heading: 34,
-                pitch: 10,
-                zoom: 1
-            },
-            position: firstStep
-        };
         
-        this.streetview = new google.maps.StreetViewPanorama(document.getElementById("streetview"), streetviewOptions);
+        this.streetview = new google.maps.StreetViewPanorama(document.getElementById("streetview"));
         this.map.setStreetView(this.streetview);
+        routeHelper.jumpToVertex(0);
     },
 
     /**
@@ -86,6 +78,16 @@ Diana.prototype = {
 
             self.calcRoute(start, end);
         });
+
+        $('#next').on('click', function(e) {
+            // Go to next vertex
+            routeHelper.jumpToNextVertex();
+        });
+
+        $('#prev').on('click', function(e) {
+            // Go to prev vertex
+            routeHelper.jumpToPrevVertex();
+        });        
     },
 
     setupGoogleMapsListeners: function() {
@@ -101,7 +103,9 @@ Diana.prototype = {
         var currentRoute = this.directionsDisplay.getDirections();
 
         this.overviewPath = currentRoute.routes[0].overview_path;
+        this.overviewPoly = google.maps.geometry.encoding.decodePath(currentRoute.routes[0].overview_polyline.points);
 
+        // routeHelper.collapseVertices(this.overviewPoly);
         // Simplified route steps for getting crime data, etc.
         this.updateRouteSteps();
         this.calcCrimeCounts();
