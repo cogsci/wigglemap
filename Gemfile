@@ -1,5 +1,7 @@
-gem 'geocoder'
-gem 'mongoid'
-gem 'rest-client'
-gem 'json'
-gem 'nokogiri'
+source 'https://rubygems.org'
+gem 'sinatra', :require => 'sinatra/base',
+gem 'json',
+gem "mongoid", "~> 3.0.0",
+gem 'geokit',
+gem 'mongo',
+gem 'bson_ext'

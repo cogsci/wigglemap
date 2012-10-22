@@ -8,6 +8,7 @@
     <script src="js/jquery.js"></script>
     <script src="js/lib/lodash/lodash.min.js"></script>
     <script src="js/lib/lodash/mixins.js"></script>
+    <script src="js/routeHelper.js"></script>
     <script src="js/app.js"></script>
     <script src="http://d3js.org/d3.v3.js"></script>
 
@@ -23,6 +24,7 @@
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY4i1NNxuNos3bn5kx9_t5-LRtgi7RQ7I&sensor=true"></script>
 </head>
 <body class="row-fluid">
+    <div id="safety"></div>
     <form id="locations" class="locations form-inline span12">
         <div class="input-prepend">
             <span class="add-on">A</span>
@@ -38,6 +40,18 @@
     </form>
     <div id="streetview" class="streetview gmap"></div>
     <div id="map_canvas" class="map-canvas gmap"></div>
-    <div id="progress_bar" class="progress-bar"></div>
+
+    <div class="controls">
+        <a id="prev" class="btn">
+            Prev
+        </a>
+
+        <a id="next" class="btn">
+            Next
+        </a>
+    </div>
+
+    <div id="progress_bar" class="progress-bar"></div>    
+    
 </body>
 </html>

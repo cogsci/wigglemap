@@ -54,18 +54,11 @@ Diana.prototype = {
     },
 
     initStreetView: function() {
-        var firstStep = this.rawSteps[0].start_point;
-
-        var streetviewOptions = {
-            pov: {
-                heading: 34,
-                pitch: 10,
-                zoom: 1
-            },
-            position: firstStep
-        };
-        this.streetview = new google.maps.StreetViewPanorama(document.getElementById("streetview"), streetviewOptions);
+        var firstStep = this.overviewPath[0];
+        
+        this.streetview = new google.maps.StreetViewPanorama(document.getElementById("streetview"));
         this.map.setStreetView(this.streetview);
+        routeHelper.jumpToVertex(0);
     },
 
     /**
@@ -85,6 +78,16 @@ Diana.prototype = {
 
             self.calcRoute(start, end);
         });
+
+        $('#next').on('click', function(e) {
+            // Go to next vertex
+            routeHelper.jumpToNextVertex();
+        });
+
+        $('#prev').on('click', function(e) {
+            // Go to prev vertex
+            routeHelper.jumpToPrevVertex();
+        });        
     },
 
     setupGoogleMapsListeners: function() {
@@ -97,11 +100,20 @@ Diana.prototype = {
      */
 
     updateData: _.throttle(function() {
+        var currentRoute = this.directionsDisplay.getDirections();
+
+        this.overviewPath = currentRoute.routes[0].overview_path;
+        this.overviewPoly = google.maps.geometry.encoding.decodePath(currentRoute.routes[0].overview_polyline.points);
+
+        // routeHelper.collapseVertices(this.overviewPoly);
+        // Simplified route steps for getting crime data, etc.
         this.updateRouteSteps();
         this.calcCrimeCounts();
         this.calcAccidentCounts();
         this.insertProgressBar();
-//        this.initStreetView();
+        // Init the street view and set to first point
+        this.calcElevations();
+        this.initStreetView();
     }, 120),
 
     /**
@@ -166,7 +178,7 @@ Diana.prototype = {
             console.log('crime: ', data);
             self.loadingCrimesMutex = false;
             self.crimes = data;
-            self.insertProgressBar();
+            self.updateSafetyRating();
         }, {mimeType: 'application/json;charset=UTF-8'});
     },
 
@@ -239,7 +251,34 @@ Diana.prototype = {
         $.ajax(ajaxOptions).fail(function() {
             this.mutei[call] = 0;
         });
-    }
+    },
 
+    _getSafetyRating: function() {
+        var numSegments = 0;
+        var numWithIncidents = 0;
+        var numWithManyIncidents = 0;
+        for (var i in this.crimes) {
+            var num = this.crimes[i];
+            if (num > 5) {
+                numWithManyIncidents += 1;
+            } else if (num > 0) {
+                numWithIncidents += 1;
+            }
+            numSegments++;
+        }
+        return Math.round(100 - 100*(0.7*numWithManyIncidents+0.3*numWithIncidents) / numSegments);
+    },
+
+    updateSafetyRating: function() {
+        var rating = this._getSafetyRating();
+        var ratingCssClass = 'success';
+        if (rating < 75) {
+            ratingCssClass = 'warning';
+        }
+        if (rating < 50) {
+            ratingCssClass = 'important';
+        }
+        $('#safety').html('<div class="label label-' + ratingCssClass + '">' +rating + '% Safety Rating</div>');
+    }
 
 };
