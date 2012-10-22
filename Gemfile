@@ -1,0 +1,5 @@
+gem 'geocoder'
+gem 'mongoid'
+gem 'rest-client'
+gem 'json'
+gem 'nokogiri'
