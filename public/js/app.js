@@ -1,6 +1,6 @@
 Diana = function() {
 
-    this.appUrl = 'http://localhost:4567';
+    this.appUrl = '';
     this.routeSteps = [];
     this.crimes = [];
     this.elevations = [];
@@ -55,7 +55,6 @@ Diana.prototype = {
 
     initStreetView: function() {
         var firstStep = this.overviewPath[0];
-        
         this.streetview = new google.maps.StreetViewPanorama(document.getElementById("streetview"));
         this.map.setStreetView(this.streetview);
         routeHelper.jumpToVertex(0);
@@ -75,6 +74,9 @@ Diana.prototype = {
                 end = self.getEndLocation();
 
             if (!start || !end) return;
+
+            $('.controls').show();
+            $('#map_canvas').show();
 
             self.calcRoute(start, end);
         });
@@ -187,8 +189,6 @@ Diana.prototype = {
     calcCrimeCounts: function() {
         var self = this;
         this.serviceCall('get_crime_counts', {steps: JSON.stringify(self.routeSteps)}, function(data) {
-            console.log('crime: ', data);
-            self.loadingCrimesMutex = false;
             self.crimes = data;
             self.updateSafetyRating();
         }, {mimeType: 'application/json;charset=UTF-8'});
@@ -198,7 +198,6 @@ Diana.prototype = {
     calcElevations: function() {
         var self = this;
         this.serviceCall('get_elevations_list', {steps: JSON.stringify(self.routeSteps)}, function(data) {
-            console.log('elevations: ', data);
             self.elevations = data;
         }, {mimeType: 'application/json;charset=UTF-8'});
     },
@@ -206,7 +205,6 @@ Diana.prototype = {
     calcAccidentCounts: function() {
         var self = this;
         this.serviceCall('get_accident_counts', {steps: JSON.stringify(self.routeSteps)}, function(data) {
-            console.log('accidents: ', data);
             self.accidents = data;
             self.insertProgressBar();
         }, {mimeType: 'application/json;charset=UTF-8'});
@@ -220,8 +218,6 @@ Diana.prototype = {
         return
       }
 
-      console.log("progress: ", self.accidents);
-      console.log("progress: ", self.crimes);
       for (i = 0; i < self.accidents.length; i++) {
         $("#progress_bar").html("");
         var color;
@@ -234,7 +230,6 @@ Diana.prototype = {
         tds += "<td class='"+color+"'></td>";
       }
       var table = "<table><tr>"+tds+"</tr></table>"
-      console.log("table: ", table);
 
       $("#progress_bar").append(table);
     },
