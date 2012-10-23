@@ -1,8 +1,7 @@
 require 'redis'
 require 'json'
 require 'geokit'
-
-SLEEP_TIME = 1.0 / 10.0
+require 'api_call'
 
 # utility methods related to geocoding and shit
 

@@ -2,6 +2,8 @@ require 'net/http'
 require 'open-uri'
 require 'json'
 
+SLEEP_TIME = 1.0 / 10.0
+
 # just calls the given url and returns json-formatted
 def get_json(url)
     begin

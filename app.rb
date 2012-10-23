@@ -19,8 +19,6 @@ Geokit::Geocoders::google = 'AIzaSyB7TqXugzqy78MGZeCajJKldKeJd8CBj9I'
 Mongoid.load!("config/mongoid.yml", :production)
 
 # AJAX method for getting the crime couunts for a specific route.
-# TODO: haven't figured out the format from the frontend. So this
-# is temporary.
 post '/get_crime_counts' do
     content_type :JSON
     route_steps = JSON.parse(params['steps'])
@@ -37,14 +35,4 @@ post '/get_accident_counts' do
   content_type :JSON
   route_steps = JSON.parse(params['steps'])
   get_accident_counts(route_steps).to_json
-end
-    
-
-
-get '/route' do
-
-end
-
-get '/score' do
-
 end

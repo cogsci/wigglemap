@@ -1,7 +1,5 @@
 require 'api_call'
 
-SLEEP_TIME = 1.0 / 10.0
-
 def get_elevations(route_steps)
     elevations = []
 
