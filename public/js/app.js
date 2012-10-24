@@ -14,7 +14,8 @@ Diana = function() {
         center: new google.maps.LatLng(37.774599,-122.42456),
         zoom: 14,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-        streetViewControl: true
+        streetViewControl: true,
+        mapTypeControl: false
     };
 
     this.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
@@ -55,9 +56,19 @@ Diana.prototype = {
 
     initStreetView: function() {
         var firstStep = this.overviewPath[0];
+        this._resizeCanvas();
         this.streetview = new google.maps.StreetViewPanorama(document.getElementById("streetview"));
         this.map.setStreetView(this.streetview);
         routeHelper.jumpToVertex(0);
+    },
+
+    _resizeCanvas: function() {
+        var height = $(window).height();
+        var $canvas = $('#canvas');
+
+        height = height - $canvas.offset().top - 83;
+
+        $canvas.css('height', height);
     },
 
     /**
@@ -66,6 +77,8 @@ Diana.prototype = {
 
     setupListeners: function() {
         var self = this;
+
+        $(window).on('resize', this._resizeCanvas);
 
         // New route submit
         $('#locations').on('submit', function(e) {

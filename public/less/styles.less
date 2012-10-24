@@ -23,6 +23,7 @@ form {
 
 header {
     h1 {
+        margin-top: 0;
         margin-left: @fluidGridGutterWidth;
     }
 }
@@ -56,7 +57,7 @@ header {
 .streetview {
     position: absolute;
     top: 0;
-    bottom: 100px;
+    bottom: 0;
     left: 0;
     width: 100%;
 }
@@ -69,7 +70,7 @@ header {
 .controls {
     position: absolute;
     bottom: 0;
-    height: @fluidGridColumnWidth + @fluidGridGutterWidth;
+    height: 83px; //@fluidGridColumnWidth + @fluidGridGutterWidth;
     width: 100%;
 }
 
@@ -77,6 +78,10 @@ header {
     text-align: center;
     width: 150px;
     height: 83px;
+
+    .btn-primary {
+        margin-top: 5px;
+    }
 }
 
 #play,
