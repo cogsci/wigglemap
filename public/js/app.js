@@ -66,6 +66,7 @@ Diana.prototype = {
 
     setupListeners: function() {
         var self = this;
+        
         // New route submit
         $('#locations').on('submit', function(e) {
             e.preventDefault();
@@ -75,8 +76,8 @@ Diana.prototype = {
 
             if (!start || !end) return;
 
-            $('.controls').show();
-            $('#map_canvas').show();
+            // Show controls and map
+            $('.controls, .map-canvas').addClass('in');
 
             self.calcRoute(start, end);
         });
