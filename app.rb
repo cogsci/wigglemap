@@ -36,3 +36,7 @@ post '/get_accident_counts' do
   route_steps = JSON.parse(params['steps'])
   get_accident_counts(route_steps).to_json
 end
+
+get '/' do
+  redirect '/index.html'
+end
