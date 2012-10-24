@@ -169,13 +169,14 @@ Diana.prototype = {
                 step = fullSteps[i];
                 routeSteps.push({
                     start_location: {
-                        lat: step.start_location.Xa,
-                        lon: step.start_location.Ya
+                        lat: step.start_location.Ya,
+                        lon: step.start_location.Za
                     },
                     end_location: {
-                        lat: step.end_location.Xa,
-                        lon: step.end_location.Ya
-                    }
+                        lat: step.end_location.Ya,
+                        lon: step.end_location.Za
+                    },
+                    estimate_distance: (Math.abs(step.end_location.Ya - step.start_location.Ya) + Math.abs(step.end_location.Za - step.start_location.Za))
                 });
             }
             this.routeSteps = routeSteps;
@@ -213,33 +214,42 @@ Diana.prototype = {
     },
 
     insertProgressBar: function() {
-        var tds = "";
-        var $progressBar = $('#progress-bar');
-    
-        if (!this.accidents) {
-            console.warn('No accident data');
-            return;
-        }
-    
-        for (var i = 0, len = this.accidents.length; i < len; i++) {
-            $progressBar.html("");
-            var color;
-            var accidents = this.accidents[i];
+      var self = this;
+      var i;
+      var tds = "";
+      if (!self.accidents) {
+        return
+      }
+      var totalDistance = 0;
+      for (i = 0; i < self.routeSteps.length; i++) {
+        totalDistance += self.routeSteps[i]["estimate_distance"];
+      }
+      console.log("totalDistance: ", totalDistance);
 
-            if (accidents == 0) {
-                color = "green"
-            } else if (accidents < 5) {
-                color = "yellow"
-            } else  {
-                color = "red"
-            }
+      for (i = 0; i < self.accidents.length; i++) {
+        $("#progress_bar").html("");
+        var color;
+        var weightedAccidents = (self.accidents[i] == 0) ? 0 : self.accidents[i] / ((self.routeSteps[i]["estimate_distance"]/totalDistance) * 100)
 
-            tds += "<td class='" + color + "'></td>";
-        }
+        console.log("weightedAccidents: ", weightedAccidents);
+        if (weightedAccidents == 0)
+          color = "green"
+        else if (weightedAccidents < 1)
+          color = "yellow"
+        else
+          color = "red"
 
-        var table = "<table><tr>"+tds+"</tr></table>"
-    
-        $progressBar.append(table);
+//        if (self.accidents[i] == 0)
+//          color = "green"
+//        else if (self.accidents[i] < 5)
+//          color = "yellow"
+//        else
+//          color = "red"
+        tds += "<td class='"+color+"' style='width:" + (self.routeSteps[i]["estimate_distance"]/totalDistance) * 100 + "%'></td>";
+      }
+      var table = "<table><tr>"+tds+"</tr></table>"
+
+      $("#progress_bar").append(table);
     },
 
     serviceCall: function(call, data, successCallback, ajaxOptions) {
