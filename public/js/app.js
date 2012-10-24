@@ -223,14 +223,12 @@ Diana.prototype = {
       for (i = 0; i < self.routeSteps.length; i++) {
         totalDistance += self.routeSteps[i]["estimate_distance"];
       }
-      console.log("totalDistance: ", totalDistance);
 
       for (i = 0; i < self.accidents.length; i++) {
         $("#progress_bar").html("");
         var color;
         var weightedAccidents = (self.accidents[i] == 0) ? 0 : self.accidents[i] / ((self.routeSteps[i]["estimate_distance"]/totalDistance) * 100)
 
-        console.log("weightedAccidents: ", weightedAccidents);
         if (weightedAccidents == 0)
           color = "green"
         else if (weightedAccidents < 1)

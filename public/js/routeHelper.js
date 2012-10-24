@@ -125,14 +125,29 @@ var routeHelper = {
         var steps = diana.currentRoute.routes[0].legs[0].steps;
 
         for (var i = 0, len = steps.length; i < len; i++) {
-            if (steps[i].start_location.lat() === currentLatLng.lat()
-                && steps[i].start_location.lng() === currentLatLng.lng()) {
+            var delta = 0.0005;
+            var linePoly = [{x: steps[i].start_location.lat()+delta, y: steps[i].start_location.lng()+delta},
+                            {x: steps[i].end_location.lat()+delta, y: steps[i].end_location.lng()+delta},
+                            {x: steps[i].end_location.lat()-delta, y: steps[i].end_location.lng()-delta},
+                            {x: steps[i].start_location.lat()-delta, y: steps[i].start_location.lng()-delta},
+                            {x: steps[i].start_location.lat()+delta, y: steps[i].start_location.lng()+delta}]
+              if (this.isPointInPoly(linePoly, {x:currentLatLng.lat(), y:currentLatLng.lng()})) {
                 diana.currentStep = i;
-            }
+              }
         }
 
+        this.highlightStep(diana.currentStep);
         return nextVertexId;
      },
+
+    isPointInPoly: function(poly, pt) {
+      for(var c = false, i = -1, l = poly.length, j = l - 1; ++i < l; j = i)
+          ((poly[i].y <= pt.y && pt.y < poly[j].y) || (poly[j].y <= pt.y && pt.y < poly[i].y))
+          && (pt.x < (poly[j].x - poly[i].x) * (pt.y - poly[i].y) / (poly[j].y - poly[i].y) + poly[i].x)
+          && (c = !c);
+      return c;
+    },
+
 
      jumpToNextVertex: function() {
         var len = diana.overviewPath.length;
@@ -143,6 +158,12 @@ var routeHelper = {
      jumpToPrevVertex: function() {
         if (nextVertexId == 1) return false;
         this.jumpToVertex(nextVertexId - 2); 
+     },
+
+     highlightStep:function(i) {
+      console.log("highlight: ", i);
+      $(".highlighted").removeClass("highlighted");
+      $("#progress_bar table td:eq("+i+")").addClass("highlighted");
      },
 
      play: function() {
