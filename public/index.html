@@ -24,29 +24,43 @@
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY4i1NNxuNos3bn5kx9_t5-LRtgi7RQ7I&sensor=true"></script>
 </head>
 <body class="row-fluid">
-    <div id="safety"></div>
-    <form id="locations" class="locations form-inline span12">
-        <div class="input-prepend">
-            <span class="add-on">A</span>
-            <input type="text" id="start-location" name="start-location" value="hayes valley, san francisco" placeholder="Start" />
-        </div>
+    <header class="masthead">
+        <h1>
+            For Diana
+        </h1>
+    </header>
+    <div class="route-controls">
+        <div id="safety"></div>
+        <form id="locations" class="locations form-inline span12">
+            <div class="input-prepend">
+                <span class="add-on">A</span>
+                <input type="text" id="start-location" name="start-location" value="hayes valley, san francisco" placeholder="Start" />
+            </div>
 
-        <div class="input-prepend">
-            <span class="add-on">B</span>
-            <input type="text" id="end-location" name="end-location" value="4th and king, san francisco" placeholder="End" />
-        </div>
+            <div class="input-prepend">
+                <span class="add-on">B</span>
+                <input type="text" id="end-location" name="end-location" value="4th and king, san francisco" placeholder="End" />
+            </div>
 
-        <input type="submit" id="submit-button" class="btn btn-primary" value="Route me!" />
-    </form>
+            <input type="submit" id="submit-button" class="btn btn-primary" value="Route me!" />
+        </form>
+    </div>
 
-    <div id="streetview" class="streetview gmap"></div>
-    <div id="map_canvas" class="map-canvas gmap fade"></div>
+    <div class="canvas">
+        <div id="streetview" class="streetview gmap"></div>
+        <div id="map_canvas" class="map-canvas gmap fade"></div>
+    </div>
 
     <div class="controls fade">
         <div class="play-controls">
             <a id="play" class="btn btn-primary btn-large">
-                Play
+                <i class="icon icon-play"></i> Play
             </a>
+
+            <a id="pause" class="btn btn-primary btn-large" style="display: none">
+                <i class="icon icon-pause"></i> Pause
+            </a>
+
             <br />
 
             <a id="prev" class="btn">
@@ -58,7 +72,7 @@
             </a>
         </div>
 
-        <div id="progress_bar" class="progress-bar"></div>
+        <div id="progress-bar" class="progress"></div>
     </div>
 
     

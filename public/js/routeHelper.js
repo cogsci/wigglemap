@@ -149,12 +149,12 @@ var routeHelper = {
         diana.map.setZoom(17);
         this.playing = setInterval(function() {
             if (routeHelper.jumpToNextVertex() == false) {
-                routeHelper.stop();
+                routeHelper.pause();
             }
         }, 1800);
      },
 
-     stop: function() {
+     pause: function() {
         clearInterval(routeHelper.playing);
         routeHelper.playing = null;
      },

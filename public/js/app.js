@@ -66,7 +66,7 @@ Diana.prototype = {
 
     setupListeners: function() {
         var self = this;
-        
+
         // New route submit
         $('#locations').on('submit', function(e) {
             e.preventDefault();
@@ -93,16 +93,17 @@ Diana.prototype = {
         });
 
         $('#play').on('click', function(e) {
-            var $button = $(e.currentTarget);
-
-            if (routeHelper.playing) {
-                routeHelper.stop();
-                $button.text('Play');
-            } else {
-                routeHelper.play();
-                $button.text('Stop');
-            }
+            routeHelper.play();
+            $(e.currentTarget).hide();
+            $('#pause').show();
         });
+
+        $('#pause').on('click', function(e) {
+            routeHelper.pause();
+            $(e.currentTarget).hide();
+            $('#play').show();
+        });
+
     },
 
     setupGoogleMapsListeners: function() {
@@ -212,27 +213,33 @@ Diana.prototype = {
     },
 
     insertProgressBar: function() {
-      var self = this;
-      var i;
-      var tds = "";
-      if (!self.accidents) {
-        return
-      }
+        var tds = "";
+        var $progressBar = $('#progress-bar');
+    
+        if (!this.accidents) {
+            console.warn('No accident data');
+            return;
+        }
+    
+        for (var i = 0, len = this.accidents.length; i < len; i++) {
+            $progressBar.html("");
+            var color;
+            var accidents = this.accidents[i];
 
-      for (i = 0; i < self.accidents.length; i++) {
-        $("#progress_bar").html("");
-        var color;
-        if (self.accidents[i] == 0)
-          color = "green"
-        else if (self.accidents[i] < 5)
-          color = "yellow"
-        else 
-          color = "red"
-        tds += "<td class='"+color+"'></td>";
-      }
-      var table = "<table><tr>"+tds+"</tr></table>"
+            if (accidents == 0) {
+                color = "green"
+            } else if (accidents < 5) {
+                color = "yellow"
+            } else  {
+                color = "red"
+            }
 
-      $("#progress_bar").append(table);
+            tds += "<td class='" + color + "'></td>";
+        }
+
+        var table = "<table><tr>"+tds+"</tr></table>"
+    
+        $progressBar.append(table);
     },
 
     serviceCall: function(call, data, successCallback, ajaxOptions) {
