@@ -5,15 +5,12 @@ require 'geocoder'
 require 'mongo'
 require 'geokit'
 
-#If you don't have accidents_geocoded.json
-#First run scrape
-#Then run geocode
-#Finally run populate
-
-#If you have accidents_geocoded.json
-#Just run populate
-
-$db = Mongo::Connection.new()["hackathon_rerout"]
+$db = Mongo::Connection.new(ENV["HACKATHON_REROUTE_MONGO_SERVER"], ENV["HACKATHON_REROUTE_MONGO_PORT"])["hackathon_reroute"]
+begin
+  $auth = $db.authenticate(ENV["HACKATHON_REROUTE_MONGO_USERNAME"], ENV["HACKATHON_REROUTE_MONGO_PASSWORD"])
+rescue 
+  #do nothing for now
+end
 
 def get_accident_counts(steps)
   accidents = []
