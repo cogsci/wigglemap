@@ -1,0 +1,13 @@
+source 'http://rubygems.org'
+
+gem 'sinatra'
+gem 'geokit'
+gem 'mongoid'
+gem 'nokogiri'
+gem 'rest-client'
+gem 'json'
+gem 'geocoder'
+gem 'mongo'
+gem 'open-uri'
+gem 'redis'
+gem 'json'
