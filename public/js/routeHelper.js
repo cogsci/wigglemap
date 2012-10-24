@@ -126,7 +126,7 @@ var routeHelper = {
      highlightStep:function(i) {
       console.log("highlight: ", i);
       $(".highlighted").removeClass("highlighted");
-      $("#progress_bar table td:eq("+i+")").addClass("highlighted");
+      $("#progress-bar table td:eq("+i+")").addClass("highlighted");
      },
 
      play: function() {
