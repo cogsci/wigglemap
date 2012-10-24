@@ -66,7 +66,7 @@ Diana.prototype = {
 
     setupListeners: function() {
         var self = this;
-        
+
         // New route submit
         $('#locations').on('submit', function(e) {
             e.preventDefault();
@@ -93,16 +93,17 @@ Diana.prototype = {
         });
 
         $('#play').on('click', function(e) {
-            var $button = $(e.currentTarget);
-
-            if (routeHelper.playing) {
-                routeHelper.stop();
-                $button.text('Play');
-            } else {
-                routeHelper.play();
-                $button.text('Stop');
-            }
+            routeHelper.play();
+            $(e.currentTarget).hide();
+            $('#pause').show();
         });
+
+        $('#pause').on('click', function(e) {
+            routeHelper.pause();
+            $(e.currentTarget).hide();
+            $('#play').show();
+        });
+
     },
 
     setupGoogleMapsListeners: function() {
@@ -225,7 +226,7 @@ Diana.prototype = {
       }
 
       for (i = 0; i < self.accidents.length; i++) {
-        $("#progress_bar").html("");
+        $("#progress-bar").html("");
         var color;
         var weightedAccidents = (self.accidents[i] == 0) ? 0 : self.accidents[i] / ((self.routeSteps[i]["estimate_distance"]/totalDistance) * 100)
 
@@ -246,7 +247,7 @@ Diana.prototype = {
       }
       var table = "<table><tr>"+tds+"</tr></table>"
 
-      $("#progress_bar").append(table);
+      $("#progress-bar").append(table);
     },
 
     serviceCall: function(call, data, successCallback, ajaxOptions) {
