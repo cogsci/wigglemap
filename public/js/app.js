@@ -227,7 +227,7 @@ Diana.prototype = {
       console.log("totalDistance: ", totalDistance);
 
       for (i = 0; i < self.accidents.length; i++) {
-        $("#progress_bar").html("");
+        $("#progress-bar").html("");
         var color;
         var weightedAccidents = (self.accidents[i] == 0) ? 0 : self.accidents[i] / ((self.routeSteps[i]["estimate_distance"]/totalDistance) * 100)
 
@@ -249,7 +249,7 @@ Diana.prototype = {
       }
       var table = "<table><tr>"+tds+"</tr></table>"
 
-      $("#progress_bar").append(table);
+      $("#progress-bar").append(table);
     },
 
     serviceCall: function(call, data, successCallback, ajaxOptions) {
