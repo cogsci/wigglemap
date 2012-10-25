@@ -18,8 +18,10 @@ var Diana = function() {
     mapTypeControl: false
   };
 
+  this._resizeCanvas();
+
   // Normal map
-  this.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+  this.map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
   // Directions renderer, goes on the map
   this.directionsDisplay = new google.maps.DirectionsRenderer({
@@ -59,8 +61,8 @@ Diana.prototype = {
 
   initStreetView: function() {
     var firstStep = this.overviewPath[0];
-    this._resizeCanvas();
-    this.streetview = new google.maps.StreetViewPanorama(document.getElementById("streetview"));
+    
+    this.streetview = new google.maps.StreetViewPanorama(document.getElementById('streetview'));
     this.map.setStreetView(this.streetview);
     routeHelper.jumpToVertex(0);
   },
@@ -93,7 +95,13 @@ Diana.prototype = {
       if (!start || !end) return;
 
       // Show controls and map
-      $('.controls, .map-canvas').addClass('in');
+      // So hacky @TODO: Make not bad
+      $('.controls, .secondary').addClass('in');
+      $('.halp').hide();
+      $('.route-controls').removeClass('overlay');
+      $('.canvas').removeClass('faded');
+
+      self._resizeCanvas();
 
       self.calcRoute(start, end);
     });
@@ -123,6 +131,8 @@ Diana.prototype = {
 
   setupGoogleMapsListeners: function() {
     // Update some metrics when route changes.
+    // @TODO: Do more targeted data updates so map doesn't recenter when it
+    // doesn't have to.
     google.maps.event.addListener(this.directionsDisplay, 'routeindex_changed', _.bind(this.updateData, this));
   },
 
@@ -144,6 +154,8 @@ Diana.prototype = {
     this.insertProgressBar();
     // Init the street view and set to first point
     this.calcElevations();
+
+    // @TODO: Don't do this every time, just update instead of init
     this.initStreetView();
   }, 120),
 
@@ -247,7 +259,6 @@ Diana.prototype = {
 
   insertProgressBar: function() {
     var self = this;
-    var i;
     var tds = "";
 
     if (!self.accidents) return;
@@ -257,7 +268,7 @@ Diana.prototype = {
       totalDistance += self.routeSteps[i]["estimate_distance"];
     }
 
-    for (i = 0; i < self.accidents.length; i++) {
+    for (var i = 0, len = self.accidents.length; i < len; i++) {
       $("#progress-bar").html("");
       var color;
       var weightedAccidents = (self.accidents[i] == 0) ? 0 : self.accidents[i] / ((self.routeSteps[i]["estimate_distance"]/totalDistance) * 100)
@@ -269,13 +280,8 @@ Diana.prototype = {
       } else {
         color = "red";
       }
-//    if (self.accidents[i] == 0)
-//      color = "green"
-//    else if (self.accidents[i] < 5)
-//      color = "yellow"
-//    else
-//      color = "red"
-    tds += "<td onclick='routeHelper.jumpToVertex(routeHelper.findClosestVertexByPathNum("+i+")); routeHelper.highlightStep("+i+")' class='"+color+"' style='width:" + (self.routeSteps[i]["estimate_distance"]/totalDistance) * 100 + "%'></td>";
+
+      tds += "<td onclick='routeHelper.jumpToVertex(routeHelper.findClosestVertexByPathNum("+i+")); routeHelper.highlightStep("+i+")' class='"+color+"' style='width:" + (self.routeSteps[i]["estimate_distance"]/totalDistance) * 100 + "%'></td>";
     }
     var table = "<table><tr>"+tds+"</tr></table>"
 

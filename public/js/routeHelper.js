@@ -26,6 +26,8 @@
  *  start of the next step given in the text directions.
  */
 
+// @TODO: De-globalize all these vars
+
 var routeHelper = {
     /**
      * Get the direction to head in from a particular vertex
@@ -45,15 +47,18 @@ var routeHelper = {
     /**
      * Jump to a particular point on the route. This is used to
      * queue up the start of the route, when a user selects a step
-     * in the driving directions, and when there is a gap in coverage
+     * in the biking directions, and when there is a gap in coverage
      * that we need to jump over.
+     *
+     * Sets both map and street view to the same point.
+     *
      * @param {number} idx The vertex number in the vertices array
      */ 
 
      jumpToVertex: function jumpToVertex(idx) {
-       currentLatLng = diana.overviewPath[idx];
-       nextVertex = diana.overviewPath[idx + 1];
-       nextVertexId = idx + 1;
+       currentLatLng  = diana.overviewPath[idx];
+       nextVertex     = diana.overviewPath[idx + 1];
+       nextVertexId   = idx + 1;
 
            bearing = this.getBearingFromVertex(idx);
        nextBearing = this.getBearingFromVertex(idx + 1);
@@ -147,6 +152,16 @@ var routeHelper = {
      },
 
      play: function() {
+        $('#map_canvas')
+          .removeClass('primary')
+          .addClass('secondary');
+
+        $('#streetview')
+          .removeClass('secondary')
+          .addClass('primary');
+
+        google.maps.event.trigger(diana.map, 'resize');
+        
         diana.map.setZoom(17);
         this.playing = setInterval(function() {
             if (routeHelper.jumpToNextVertex() == false) {
