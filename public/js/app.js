@@ -187,8 +187,10 @@ Diana.prototype = {
     ich.routeInfo({
       time: this.directionsDisplay.getDirections().routes[0].legs[0].duration.text,
       distance: this.directionsDisplay.getDirections().routes[0].legs[0].distance.text
-    }).appendTo('#map_canvas');
+    }).appendTo('#streetview');
     
+    // Remove old listeners if any
+    $('.route-info .link').off();
     $('.route-info .link').on('click', function(e) {
       var newWin = window.open('');
       newWin.document.write($('#directions-proxy').html());
