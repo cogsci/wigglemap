@@ -372,3 +372,8 @@ Diana.prototype = {
   }
 
 };
+
+
+$(function() {
+    diana = new Diana();
+});
