@@ -262,7 +262,7 @@ Diana.prototype = {
 //          color = "yellow"
 //        else
 //          color = "red"
-        tds += "<td class='"+color+"' style='width:" + (self.routeSteps[i]["estimate_distance"]/totalDistance) * 100 + "%'></td>";
+        tds += "<td onclick='routeHelper.jumpToVertex(routeHelper.findClosestVertexByPathNum("+i+")); routeHelper.highlightStep("+i+")' class='"+color+"' style='width:" + (self.routeSteps[i]["estimate_distance"]/totalDistance) * 100 + "%'></td>";
       }
       var table = "<table><tr>"+tds+"</tr></table>"
 

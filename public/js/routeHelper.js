@@ -55,6 +55,9 @@ var routeHelper = {
        nextVertex = diana.overviewPath[idx + 1];
        nextVertexId = idx + 1;
 
+      console.log("overviewPath: ", idx);
+      console.log("overviewPath: ", diana.overviewPath[idx]);
+
            bearing = this.getBearingFromVertex(idx);
        nextBearing = this.getBearingFromVertex(idx + 1);
 
@@ -111,7 +114,6 @@ var routeHelper = {
       return c;
     },
 
-
      jumpToNextVertex: function() {
         var len = diana.overviewPath.length;
         if (nextVertexId > len) return false;
@@ -123,10 +125,29 @@ var routeHelper = {
         this.jumpToVertex(nextVertexId - 2); 
      },
 
-     highlightStep:function(i) {
+     highlightStep: function(i) {
       console.log("highlight: ", i);
       $(".highlighted").removeClass("highlighted");
       $("#progress-bar table td:eq("+i+")").addClass("highlighted");
+     },
+
+     findClosestVertexByPathNum: function(pathNum) {
+        var closest = {Ya: 0, Za: 0};
+        var closestIdx = -1;
+        var steps = diana.currentRoute.routes[0].legs[0].steps;
+        var starting_point = {Ya: steps[pathNum].start_location.lat(), Za: steps[pathNum].start_location.lng()};
+        var i;
+        for (i = 0; i < diana.overviewPath.length; i++) {
+          if (this.latLngDistance(diana.overviewPath[i], starting_point) < this.latLngDistance(closest, starting_point)) {
+            closest = diana.overviewPath[i];
+            closestIdx = i;
+          }
+        }
+        return closestIdx;
+     },
+
+     latLngDistance: function(p1, p2) {
+        return Math.abs(p2["Ya"] - p1["Ya"]) + Math.abs(p2["Za"] - p1["Za"])
      },
 
      play: function() {
