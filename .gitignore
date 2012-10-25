@@ -1,3 +1,4 @@
 resources/*
 *.DS_Store
 *.swp
+*.tm_properties
