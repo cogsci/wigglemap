@@ -18,26 +18,27 @@ var Diana = function() {
     mapTypeControl: false
   };
 
+  // Normal map
   this.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
+  // Directions renderer, goes on the map
   this.directionsDisplay = new google.maps.DirectionsRenderer({
     draggable: true
   });
 
   this.directionsDisplay.setMap(this.map);
 
+  // Directions service, gets directions and stuff
   this.directionsService = new google.maps.DirectionsService();
 
-  // DRIVING, BICYCLING, TRANSIT, WALKING
+  // BICYCLING, of course
   this.TRAVEL_MODE = google.maps.DirectionsTravelMode.BICYCLING;
 
   this.setupListeners();
   this.setupGoogleMapsListeners();
-
 };
 
 Diana.prototype = {
-
   getStartLocation: function() {
     return $('#start-location').val();
   },
@@ -176,8 +177,10 @@ Diana.prototype = {
   },
 
   /**
-   * Store the list of steps concisely; Google gives a push of information we don't want.
+   * Store the list of steps concisely; Google gives a push of information we 
+   * don't want.
    */
+
   updateRouteSteps: function() {
       this.rawSteps = this.directionsDisplay.getDirections().routes[0].legs[0].steps;
 
@@ -209,6 +212,7 @@ Diana.prototype = {
   /**
    * Calculate a list of crime counts associated with each step in the route.
    */
+
   calcCrimeCounts: function() {
     var self = this;
     this.serviceCall('get_crime_counts', {steps: JSON.stringify(self.routeSteps)}, function(data) {
@@ -269,6 +273,10 @@ Diana.prototype = {
 
     $("#progress-bar").append(table);
   },
+
+  /**
+   * Make calls to our API
+   */
 
   serviceCall: function(call, data, successCallback, ajaxOptions) {
     ajaxOptions = ajaxOptions || {};
