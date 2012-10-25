@@ -55,9 +55,6 @@ var routeHelper = {
        nextVertex = diana.overviewPath[idx + 1];
        nextVertexId = idx + 1;
 
-      console.log("overviewPath: ", idx);
-      console.log("overviewPath: ", diana.overviewPath[idx]);
-
            bearing = this.getBearingFromVertex(idx);
        nextBearing = this.getBearingFromVertex(idx + 1);
 
@@ -126,7 +123,6 @@ var routeHelper = {
      },
 
      highlightStep: function(i) {
-      console.log("highlight: ", i);
       $(".highlighted").removeClass("highlighted");
       $("#progress-bar table td:eq("+i+")").addClass("highlighted");
      },
