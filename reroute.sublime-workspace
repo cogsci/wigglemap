@@ -1,0 +1,1401 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"e",
+				"e"
+			],
+			[
+				"fluidGrid",
+				"fluidGridGutterWidth"
+			],
+			[
+				"res",
+				"rest"
+			],
+			[
+				"url",
+				"url"
+			],
+			[
+				"test",
+				"test"
+			],
+			[
+				"URL",
+				"URLs"
+			],
+			[
+				"frag",
+				"frag"
+			],
+			[
+				"albums",
+				"albums"
+			],
+			[
+				"bands",
+				"BandsView"
+			],
+			[
+				"wifi",
+				"wifi"
+			],
+			[
+				"prot",
+				"prototype"
+			],
+			[
+				"None",
+				"None"
+			],
+			[
+				"model",
+				"model"
+			],
+			[
+				"collection",
+				"collection"
+			],
+			[
+				"configs",
+				"configs"
+			],
+			[
+				"uuid",
+				"uuid"
+			],
+			[
+				"groups",
+				"groups"
+			],
+			[
+				"col",
+				"col"
+			],
+			[
+				"opts",
+				"opts"
+			],
+			[
+				"nam",
+				"name"
+			],
+			[
+				"Profile",
+				"Profiles"
+			],
+			[
+				"Profiles",
+				"Profiles"
+			],
+			[
+				"be",
+				"beforeEach	beforeEach()"
+			],
+			[
+				"profiles",
+				"profiles"
+			],
+			[
+				"gener",
+				"generateRoleMask"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/JSHint/JSHint.sublime-build",
+	"command_palette":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+			[
+				"gitcom",
+				"Git: Commit history"
+			],
+			[
+				"setdust",
+				"Set Syntax: Dust.js Template"
+			],
+			[
+				"git diff",
+				"Git: Diff Current File"
+			],
+			[
+				"gitdiff",
+				"Git: Diff Staged"
+			],
+			[
+				"gitdif",
+				"Git: Diff All"
+			],
+			[
+				"git blame",
+				"Git: Blame"
+			],
+			[
+				"setsyjava",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"gitadd",
+				"Git: Add..."
+			],
+			[
+				"gits",
+				"Git: Status"
+			],
+			[
+				"packageup",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"packagere",
+				"Package Control: Remove Package"
+			],
+			[
+				"gitcheck",
+				"Git: Checkout Current File"
+			],
+			[
+				"git history",
+				"Git: Commit history"
+			],
+			[
+				"git histo",
+				"Git: Commit history"
+			],
+			[
+				"setsyntaxjson",
+				"Set Syntax: JSON"
+			],
+			[
+				"setsyntaxjad",
+				"Set Syntax: Jade"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"gitbl",
+				"Git: Blame"
+			],
+			[
+				"diff",
+				"Git: Diff All"
+			],
+			[
+				"blame",
+				"Git: Blame"
+			],
+			[
+				"format",
+				"Format: Javascript"
+			],
+			[
+				"setjavas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"log",
+				"Git: Log Current File"
+			],
+			[
+				"git log",
+				"Git: Log Current File"
+			],
+			[
+				"hist",
+				"Git: Commit history"
+			],
+			[
+				"git chec",
+				"Git: Checkout Current File"
+			],
+			[
+				"gitlog",
+				"Git: Log Current File"
+			],
+			[
+				"history",
+				"Git: Commit history"
+			],
+			[
+				"gitcommit",
+				"Git: Commit history"
+			],
+			[
+				"git",
+				"Git: Log Current File"
+			],
+			[
+				"hi",
+				"Git: Commit history"
+			],
+			[
+				"gitst",
+				"Git: Status"
+			],
+			[
+				"githist",
+				"Git: Commit history"
+			],
+			[
+				"git comm",
+				"Git: Custom Command"
+			],
+			[
+				"git check",
+				"Git: Checkout Current File"
+			],
+			[
+				"git checkout",
+				"Git: Checkout Current File"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"json",
+				"Pretty JSON: Reformat (Pretty Print) JSON"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"git commi",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"commit",
+				"Git: Quick Commit"
+			],
+			[
+				"setsy dust",
+				"Set Syntax: Dust.js Template"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"com",
+				"Git: Commit"
+			],
+			[
+				"add",
+				"Git: Add..."
+			],
+			[
+				"setsyjs",
+				"Set Syntax: JSON"
+			],
+			[
+				"Snippet: ",
+				"Snippet: amd-define-view"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"jshi",
+				"JSHint: Linter"
+			],
+			[
+				"pretyy",
+				"Pretty JSON: Reformat (Pretty Print) JSON"
+			],
+			[
+				"packagerem",
+				"Package Control: Remove Package"
+			],
+			[
+				"packagene",
+				"Package Control: Enable Package"
+			],
+			[
+				"packagein",
+				"Package Control: Install Package"
+			],
+			[
+				"addrepo",
+				"Package Control: Add Repository"
+			],
+			[
+				"packagel",
+				"Package Control: List Packages"
+			],
+			[
+				"package install",
+				"Package Control: Install Package"
+			],
+			[
+				"packageinstall",
+				"Package Control: Install Package"
+			],
+			[
+				"packageremove",
+				"Package Control: Remove Package"
+			],
+			[
+				"package remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"packagecontrolen",
+				"Package Control: Enable Package"
+			],
+			[
+				"packageconlist",
+				"Package Control: List Packages"
+			],
+			[
+				"packageaddrepo",
+				"Package Control: Add Repository"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"packarepo",
+				"Package Control: Add Repository"
+			],
+			[
+				"st",
+				"Git: Status"
+			],
+			[
+				"statu",
+				"Git: Status"
+			],
+			[
+				"git st",
+				"Git: Status"
+			],
+			[
+				"jsav",
+				"Project: Save As"
+			],
+			[
+				"install	",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 435.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/kel/Projects/reroute/untitled.sublime-project",
+		"/Users/kel/Projects/reroute/.gitignore",
+		"/Users/kel/Projects/reroute/reroute.sublime-project",
+		"/Users/kel/Projects/reroute/reroute.sublime",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/test/spec-helpers.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/apps/appDetail.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/model/appPolicy.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/CleanView.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/userPortal/view/devices/deviceInfo.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/account/loginView.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/settings/locale.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/components/map.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/libs/rapsphere/authentication.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/libs/leaflet/leaflet-src.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/components/modal.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/test/admin/fixtures/models.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/categories/categoryDetail.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/_modal.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/WEB-INF/jsp/admin.jsp",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/_base.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/app.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/_notification.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/base/_preboot.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/config/configDetail.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/libs/bootstrap/_mixins.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/_forms.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/base/_base.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/libs/backbone/backbone.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/config/config.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/config/configView.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/settings/genericSettings.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/model/genericSettings.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/settings/inputs/LISTEntry.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/settings/inputs/MAPEntry.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/settings/settingEntry.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/settings/inputs/MAP.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/settings/inputs/LIST.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/libs/webshims/minified/polyfiller.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/libs/webshims/minified/extras/mousepress.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/libs/webshims/minified/extras/modernizr-custom.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/config/configs/wifi/authentication.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/settings/inputs/PASSWORD.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/config/configs/BUNDLE_WIFI.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/config/configs/wifi/enterpriseEncryption.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/config/configs/wifi/protocols.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/settings/inputs/ENUM.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/config/configs/wifi/trust.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/test/admin/specs/settings.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/test/admin/specs/util.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/plugins.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/test/admin/test.html",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/_buttons.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/components/eula.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/test/admin/specs/config.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/config/configs/vpn/auth-cert.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/config/configs/vpn/customData.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/config/configs/BUNDLE_VPN.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/settings/inputs/BOOL.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/router/router.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/model/configs/wifi.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/namespace.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/toolbar/toolbar.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/user/detail/policies.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/toolbar/toolbar.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/libs/dust/dust-1.1.0.amd.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/settings/inputs/label.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/config/configs/wifi/enterpriseSecurity.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/tenantSettings/uploadDialog.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/components/uploadModal.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/components/fileUploader.js",
+		"/Users/kel/RAPsphere/gitsvn/server/refresh.sh",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/test/libs/mocha.css",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/test/libs/mocha.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/components/modalLarge.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/components/modal.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/device/deviceHeader.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/device/userHeader.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/devices/userHeader.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/device/status.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/WEB-INF/jsp/index.jsp",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/sections/_devices.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/_masthead.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/_sidebar.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/devices/deviceDetail.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/device/logs.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/device/apps.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/users/userDetail.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/user/userDetail.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/device/deviceDetail.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/libs/bootstrap/_variables.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/userTemplates/install.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/libs/rapsphere/util.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/userPortal/userPortal.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/account/onboardUser.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/userPortal/view/userMenu.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/WEB-INF/jsp/raps.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/tenantSettings/upload/PUSHCERT.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/tenantSettings/upload/APPCERT.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/libs/jquery/jquery.fileupload.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/components/filename.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/tenantSettings/tenantCertsTable.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/config/configsView.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/settings/inputs/FILE.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/components/filename.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/tenantSettings/upload/PROPROF.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/tenantSettings/upload/MDMCERT.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates/user/importUsers.dust",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/libs/_jquery.fileupload.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/main.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/user.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/libs/components/bytes.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/router/sectionRouter.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/collection/tenantCerts.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/components/fileuploader.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/libs/bootstrap/bootstrap-affix.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/libs/rapsphere/notice.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/tenantSettings/tenantSettingsView.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/_chosen.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view/users/usersView.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/libs/bootstrap/_responsive-767px-max.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/_tables.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/libs/bootstrap/_dropdowns.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/toolbar/_toolbar.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/libs/bootstrap/_modals.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/_dropdown.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss/libs/_leaflet.scss",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/libs/leaflet/leaflet.js",
+		"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/vendor/leaflet.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates",
+			"",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss",
+			"",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/libs/bootstrap",
+			"",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/widgets",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/userPortal",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/libs/rapsphere",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/view",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/model",
+			"",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss",
+			"",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss",
+			"",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss",
+			"",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js,/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js,/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/userTemplates",
+			"",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/js/model",
+			"",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss",
+			"",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates,/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/userTemplates",
+			"<open folders>,/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/templates,/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/userTemplates",
+			"<open folders>",
+			"",
+			"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/scss",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"shim",
+			"AppstoreSearch",
+			"appStoreSearch",
+			"AppStoreSearch",
+			"setupfakexhr",
+			"accepts",
+			"iframe",
+			"form",
+			"crs: L.CRS.EPSG4326",
+			"crs: L.CRS.EPSG4326,",
+			"updatelocation",
+			"this.map.",
+			"this.map",
+			"gree",
+			"#notific",
+			"inherits",
+			"extend",
+			"@mixin rem",
+			"rem",
+			"help-block",
+			"mini",
+			"config/configs/vpn/customData",
+			"wifi",
+			"follower",
+			"fixed",
+			"\"/}",
+			"select",
+			"router.content",
+			"content",
+			"Default route triggered ",
+			"\"Default route triggered ",
+			"version",
+			"BOOLEAN",
+			"config",
+			"any",
+			"require('plug",
+			"status",
+			"rapsphere",
+			"$apps",
+			"headerheight",
+			"show()",
+			"show",
+			"startHistory",
+			"setupListeners",
+			"setupPlugins",
+			"setupAnchors",
+			"auth:",
+			"auth:userauthenticated",
+			"auth:inituser",
+			"fileinput-button",
+			"fileupload-buttonbar",
+			"fileuploader",
+			"@analytics",
+			"track",
+			"components/fileupload",
+			"fileuploader",
+			"fileselections",
+			"checkposition",
+			"checktoken",
+			"deprovision",
+			"z-index",
+			"images",
+			"(images",
+			"z-index",
+			"leaflet",
+			"this may",
+			"modal",
+			"top: 50%",
+			"top",
+			"legend",
+			"helplink",
+			"_addCb",
+			"fileUploader",
+			"fileUpload",
+			"config-form-container",
+			"urlroot",
+			"assign",
+			"Policy",
+			"policy",
+			"config",
+			"urlRoot",
+			"urlroot",
+			"getDefaultPolicy",
+			"merge",
+			"getDefaultPolicy",
+			"configtype",
+			"reprovi",
+			"self",
+			"trusted",
+			"settings/inputs/enum",
+			"label",
+			"thead-blue",
+			"customdata",
+			"vendorconfig",
+			"customData",
+			"customdata",
+			"custom-data\"",
+			"parseEntry",
+			"typeParse",
+			"optional",
+			"[optional]",
+			"optional",
+			"_parseType",
+			"inputType",
+			"_parse",
+			"inputType",
+			"_parseValue",
+			"_parsetype",
+			"inputType",
+			"_parseValue",
+			"number",
+			"?",
+			"_parsevalue",
+			"policyView",
+			"proxy",
+			"port",
+			"entry.validation",
+			"fontsize(",
+			"fontsize",
+			"monospace",
+			"number",
+			"baselinehe",
+			"\"number\"",
+			"type=\"number\"",
+			"number",
+			"_parse",
+			"AuthGroup",
+			"_parseValue"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"BOOL",
+			"btn-fileinput",
+			"(../images/libs/leaflet",
+			"getDefault",
+			"Optional",
+			"sharedSecret",
+			"",
+			"@include rem($1px)",
+			"$2@include rem($1px)",
+			"$1@include rem($2px)",
+			"@include rem($1px)",
+			"@include rem($1px);",
+			"term",
+			"                \"",
+			"              \"",
+			"                    ",
+			"              \"",
+			"                ",
+			"$1$2\\n$1*\\n$1* @param",
+			"$1$2*\\n$1* @param",
+			"$1$2\\n$1*\\n$1* @param",
+			"$1$2\\n$1* @param",
+			"$1$2\\n$1 * @param",
+			"$1 \\n * @param",
+			"require('use!plugin",
+			"",
+			"h2",
+			"\\n",
+			"name=\"file[]",
+			"name=\"file",
+			"- $1 / $baseline * 1rem",
+			"",
+			"MobileNow",
+			"view/account/loginView",
+			"account/",
+			"\"",
+			"bt.",
+			"/",
+			"",
+			"this.mapView",
+			"../images",
+			"/images",
+			"images/libs/leaflet",
+			"this.$select",
+			"this.urlRoot + '",
+			"{\"name\":\"$1\", \"type\": \"TEXT\"},",
+			"{\"name\":$1, \"type\": \"TEXT\"},",
+			"for=\"{name}\"",
+			"\"$1\":",
+			"collection"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"output.git":
+	{
+		"height": 112.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"spech",
+				"Tests/spec-helpers.js"
+			],
+			[
+				"admin.jsp",
+				"WEB-INF/jsp/admin.jsp"
+			],
+			[
+				"helper",
+				"Tests/spec-helpers.js"
+			],
+			[
+				"app",
+				"Javascript/app.js"
+			],
+			[
+				"namesp",
+				"Javascript/namespace.js"
+			],
+			[
+				"auth",
+				"Javascript/libs/rapsphere/authentication.js"
+			],
+			[
+				"leaflet",
+				"Javascript/libs/leaflet/leaflet-src.js"
+			],
+			[
+				"authen",
+				"Javascript/libs/rapsphere/authentication.js"
+			],
+			[
+				"loginvi",
+				"Javascript/view/account/loginView.js"
+			],
+			[
+				"cleanview",
+				"Javascript/view/CleanView.js"
+			],
+			[
+				"map.js",
+				"Javascript/view/components/map.js"
+			],
+			[
+				"deviceinfo",
+				"Javascript/userPortal/view/devices/deviceInfo.js"
+			],
+			[
+				"specmap",
+				"Tests/admin/specs/map.js"
+			],
+			[
+				"categorydeta",
+				"Javascript/view/categories/categoryDetail.js"
+			],
+			[
+				"preboot",
+				"CSS/base/_preboot.scss"
+			],
+			[
+				"modalcs",
+				"CSS/_modal.scss"
+			],
+			[
+				"modaldu",
+				"Admin Templates/components/modal.dust"
+			],
+			[
+				"basescs",
+				"CSS/_base.scss"
+			],
+			[
+				"models",
+				"Tests/admin/fixtures/models.js"
+			],
+			[
+				"backbone",
+				"Javascript/libs/backbone/backbone.js"
+			],
+			[
+				"specut",
+				"Tests/admin/specs/util.js"
+			],
+			[
+				"viewgenericse",
+				"Javascript/view/settings/genericSettings.js"
+			],
+			[
+				"plugins.js",
+				"Javascript/plugins.js"
+			],
+			[
+				"genericsett",
+				"Javascript/model/genericSettings.js"
+			],
+			[
+				"buttonscs",
+				"CSS/_buttons.scss"
+			],
+			[
+				"enum",
+				"Admin Templates/settings/inputs/ENUM.dust"
+			],
+			[
+				"configdust",
+				"Admin Templates/config/config.dust"
+			],
+			[
+				"eulajs",
+				"Javascript/view/components/eula.js"
+			],
+			[
+				"genericsettings",
+				"Javascript/view/settings/genericSettings.js"
+			],
+			[
+				"cleanvi",
+				"Javascript/view/CleanView.js"
+			],
+			[
+				"configdetail",
+				"Javascript/view/config/configDetail.js"
+			],
+			[
+				"toolbarjs",
+				"Javascript/view/toolbar/toolbar.js"
+			],
+			[
+				"dust",
+				"Javascript/libs/dust/dust-1.1.0.amd.js"
+			],
+			[
+				"fileupload",
+				"Javascript/view/components/fileUploader.js"
+			],
+			[
+				"uploadmo",
+				"Javascript/view/components/uploadModal.js"
+			],
+			[
+				"uploaddialo",
+				"Javascript/view/tenantSettings/uploadDialog.js"
+			],
+			[
+				"mochacss",
+				"Tests/libs/mocha.css"
+			],
+			[
+				"mochajs",
+				"Tests/libs/mocha.js"
+			],
+			[
+				"configvi",
+				"Javascript/view/config/configView.js"
+			],
+			[
+				"fixturemodel",
+				"Tests/admin/fixtures/models.js"
+			],
+			[
+				"specconfig",
+				"Tests/admin/specs/config.js"
+			],
+			[
+				"vpndust",
+				"Admin Templates/config/configs/BUNDLE_VPN.dust"
+			],
+			[
+				"wifidust",
+				"Admin Templates/config/configs/BUNDLE_WIFI.dust"
+			],
+			[
+				"wifi",
+				"Javascript/model/configs/wifi.js"
+			],
+			[
+				"modal",
+				"Admin Templates/components/modal.dust"
+			],
+			[
+				"modal.js",
+				"Javascript/view/components/modal.js"
+			],
+			[
+				"index.jsp",
+				"WEB-INF/jsp/index.jsp"
+			],
+			[
+				"devicesscs",
+				"CSS/sections/_devices.scss"
+			],
+			[
+				"devicestat",
+				"Admin Templates/device/status.dust"
+			],
+			[
+				"deviceuser",
+				"Javascript/view/devices/userHeader.js"
+			],
+			[
+				"devuser",
+				"Admin Templates/device/userHeader.dust"
+			],
+			[
+				"devicehead",
+				"Admin Templates/device/deviceHeader.dust"
+			],
+			[
+				"devices.scs",
+				"CSS/sections/_devices.scss"
+			],
+			[
+				"devicestatus",
+				"Admin Templates/device/status.dust"
+			],
+			[
+				"devicelogs",
+				"Admin Templates/device/logs.dust"
+			],
+			[
+				"deviceapps",
+				"Admin Templates/device/apps.dust"
+			],
+			[
+				"devicedetail.js",
+				"Javascript/view/devices/deviceDetail.js"
+			],
+			[
+				"devicede",
+				"Admin Templates/device/deviceDetail.dust"
+			],
+			[
+				"userdetaildu",
+				"Admin Templates/user/userDetail.dust"
+			],
+			[
+				"userde",
+				"Javascript/view/users/userDetail.js"
+			],
+			[
+				"sidebarsc",
+				"CSS/_sidebar.scss"
+			],
+			[
+				"base",
+				"CSS/_base.scss"
+			],
+			[
+				"var",
+				"CSS/libs/bootstrap/_variables.scss"
+			],
+			[
+				"mast",
+				"CSS/_masthead.scss"
+			],
+			[
+				"install",
+				"User Templates/install.dust"
+			],
+			[
+				"loginv",
+				"Javascript/view/account/loginView.js"
+			],
+			[
+				"util",
+				"Javascript/libs/rapsphere/util.js"
+			],
+			[
+				"app.js",
+				"Javascript/app.js"
+			],
+			[
+				"raps.js",
+				"Root/WEB-INF/jsp/raps.js"
+			],
+			[
+				"tenantcertta",
+				"Javascript/view/tenantSettings/tenantCertsTable.js"
+			],
+			[
+				"configsv",
+				"Javascript/view/config/configsView.js"
+			],
+			[
+				"filedust",
+				"Admin Templates/settings/inputs/FILE.dust"
+			],
+			[
+				"fileupl",
+				"Javascript/view/components/fileUploader.js"
+			],
+			[
+				"sectionrout",
+				"Javascript/router/sectionRouter.js"
+			],
+			[
+				"modaljs",
+				"Javascript/view/components/modal.js"
+			],
+			[
+				"viewcer",
+				"Javascript/view/tenantSettings/tenantCertsTable.js"
+			],
+			[
+				"cert",
+				"Javascript/collection/tenantCerts.js"
+			],
+			[
+				"fileuplo",
+				"Javascript/view/components/fileuploader.js"
+			],
+			[
+				"affix",
+				"Javascript/libs/bootstrap/bootstrap-affix.js"
+			],
+			[
+				"userportal",
+				"Javascript/userPortal/userPortal.js"
+			],
+			[
+				"authent",
+				"Javascript/libs/rapsphere/authentication.js"
+			],
+			[
+				"names",
+				"Javascript/namespace.js"
+			],
+			[
+				"tenantsetv",
+				"Javascript/view/tenantSettings/tenantSettingsView.js"
+			],
+			[
+				"notice",
+				"Javascript/libs/rapsphere/notice.js"
+			],
+			[
+				"varia",
+				"CSS/libs/bootstrap/_variables.scss"
+			],
+			[
+				"chosenscs",
+				"CSS/_chosen.scss"
+			],
+			[
+				"usersvi",
+				"Javascript/view/users/usersView.js"
+			],
+			[
+				"modalscs",
+				"CSS/_modal.scss"
+			],
+			[
+				"responsive-76",
+				"CSS/libs/bootstrap/_responsive-767px-max.scss"
+			],
+			[
+				"modal.scs",
+				"CSS/libs/bootstrap/_modals.scss"
+			],
+			[
+				"tablescs",
+				"CSS/_tables.scss"
+			],
+			[
+				"toolbarscs",
+				"CSS/toolbar/_toolbar.scss"
+			],
+			[
+				"dropdownscss",
+				"CSS/_dropdown.scss"
+			],
+			[
+				"vendorleaf",
+				"Javascript/vendor/leaflet.js"
+			],
+			[
+				"leaflet-sr",
+				"Javascript/libs/leaflet/leaflet-src.js"
+			],
+			[
+				"leafletscs",
+				"CSS/libs/_leaflet.scss"
+			],
+			[
+				"preboo",
+				"CSS/base/_preboot.scss"
+			],
+			[
+				"inst",
+				"User Templates/install.dust"
+			],
+			[
+				"installdus",
+				"User Templates/install.dust"
+			],
+			[
+				"mainscs",
+				"CSS/main.scss"
+			],
+			[
+				"responsive",
+				"CSS/libs/bootstrap/_responsive-767px-max.scss"
+			],
+			[
+				"templates/header",
+				"Admin Templates/header.dust"
+			],
+			[
+				"bootstrapform",
+				"CSS/libs/bootstrap/_forms.scss"
+			],
+			[
+				"formscs",
+				"CSS/_forms.scss"
+			],
+			[
+				"headerdust",
+				"Admin Templates/header.dust"
+			],
+			[
+				"overview",
+				"Admin Templates/overview.dust"
+			],
+			[
+				"mastheadsc",
+				"CSS/_masthead.scss"
+			],
+			[
+				"admin.s",
+				"Root/WEB-INF/jsp/admin.jsp"
+			],
+			[
+				"masthead",
+				"CSS/_masthead.scss"
+			],
+			[
+				"filedu",
+				"Admin Templates/settings/inputs/FILE.dust"
+			],
+			[
+				"logindu",
+				"Admin Templates/login.dust"
+			],
+			[
+				"grunt",
+				"Root/grunt.js"
+			],
+			[
+				"modelconfig",
+				"Javascript/model/config.js"
+			],
+			[
+				"global",
+				"Javascript/widgets/globalSearch.js"
+			],
+			[
+				"configdetailhed",
+				"Admin Templates/config/detail/header.dust"
+			],
+			[
+				"configetajs",
+				"Javascript/view/config/configDetail.js"
+			],
+			[
+				"configde",
+				"Admin Templates/config/configDetail.dust"
+			],
+			[
+				"configsta",
+				"Javascript/view/config/configsTable.js"
+			],
+			[
+				"model/policy",
+				"Javascript/model/policy.js"
+			],
+			[
+				"model/userpoli",
+				"Javascript/model/userPolicy.js"
+			],
+			[
+				"model/user",
+				"Javascript/model/user.js"
+			],
+			[
+				"userdeta",
+				"Javascript/view/users/userDetail.js"
+			],
+			[
+				"fixturesmodel",
+				"Root/test/admin/fixtures/models.js"
+			],
+			[
+				"fixtures",
+				"Root/test/admin/fixtures/fixtures.js"
+			],
+			[
+				"testconfig",
+				"Root/test/admin/specs/config.js"
+			],
+			[
+				"test/config",
+				"Root/test/config.js"
+			],
+			[
+				"testpolicy",
+				"Root/test/admin/specs/policy.js"
+			],
+			[
+				"testpoli",
+				"Root/test/admin/shared/policy.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Users/kel/RAPsphere/gitsvn/server/console/src/main/webapp/MobileNow Webapp.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 230.0,
+	"status_bar_visible": true
+}
