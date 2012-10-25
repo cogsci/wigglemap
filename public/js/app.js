@@ -94,10 +94,13 @@ Diana.prototype = {
       if (!start || !end) return;
 
       // Show controls and map
+      // So hacky @TODO: Make not bad
       $('.controls, .secondary').addClass('in');
       $('.halp').hide();
       $('.route-controls').removeClass('overlay');
       $('.canvas').removeClass('faded');
+
+      self._resizeCanvas();
 
       self.calcRoute(start, end);
     });
