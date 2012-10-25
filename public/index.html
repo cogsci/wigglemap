@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Diana</title>
-    <!-- TODO: Replace with CSS -->
+    <title>wiggle</title>
     <link rel="stylesheet/less" type="text/css" href="less/styles.less">
     <script src="js/lib/less/less.min.js" type="text/javascript"></script>
     <script src="js/jquery.js"></script>
@@ -11,15 +10,12 @@
     <script src="js/lib/icanhaz.min.js"></script>
     <script src="js/routeHelper.js"></script>
     <script src="js/app.js"></script>
-    <script src="http://d3js.org/d3.v3.js"></script>
-
   
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY4i1NNxuNos3bn5kx9_t5-LRtgi7RQ7I&sensor=true"></script>
 
     <script type="text/javascript">
-    
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-35860904-1']);
       _gaq.push(['_trackPageview']);
@@ -33,9 +29,7 @@
 </head>
 <body>
     <header class="masthead">
-        <h1>
-            For Diana
-        </h1>
+        <h1>wiggle</h1>
     </header>
     <div class="route-wrapper row-fluid">
 
@@ -61,7 +55,6 @@
                 </ol>    
             </div>
 
-            <div id="safety"></div>
             <form id="locations" class="locations form-inline">
                 <div class="input-prepend">
                     <span class="add-on">A</span>
@@ -93,20 +86,12 @@
             <a id="play" class="btn btn-primary btn-large">
                 <i class="icon icon-play"></i> Play
             </a>
-
             <a id="pause" class="btn btn-primary btn-large" style="display: none">
                 <i class="icon icon-pause"></i> Pause
             </a>
-
-            <br />
-
-            <a id="prev" class="btn">
-                Prev
-            </a>
-
-            <a id="next" class="btn">
-                Next
-            </a>
+            <br>
+            <a id="prev" class="btn">Prev</a>
+            <a id="next" class="btn">Next</a>
         </div>
 
         <div id="progress-bar" class="progress"></div>
