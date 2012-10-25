@@ -325,7 +325,7 @@ Diana.prototype = {
     var rating          = this._getSafetyRating();
     var ratingCssClass  = 'success';
 
-    if (rating < 75) { ratingCssClass = 'warning';
+    if (rating < 75) ratingCssClass = 'warning';
     if (rating < 50) ratingCssClass = 'important';
 
     $('#safety').html('<div class="label label-' + ratingCssClass + '">' +rating + '% Safety Rating</div>');
