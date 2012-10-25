@@ -27,6 +27,7 @@ var Diana = function() {
   });
 
   this.directionsDisplay.setMap(this.map);
+  this.directionsDisplay.setPanel(document.getElementById('directions-proxy'));
 
   // Directions service, gets directions and stuff
   this.directionsService = new google.maps.DirectionsService();
@@ -118,7 +119,6 @@ Diana.prototype = {
       $(e.currentTarget).hide();
       $('#play').show();
     });
-
   },
 
   setupGoogleMapsListeners: function() {
@@ -176,6 +176,12 @@ Diana.prototype = {
       time: this.directionsDisplay.getDirections().routes[0].legs[0].duration.text,
       distance: this.directionsDisplay.getDirections().routes[0].legs[0].distance.text
     }).appendTo('#map_canvas');
+    
+    $('.route-info .link').on('click', function(e) {
+      var newWin = window.open('');
+      newWin.document.write($('#directions-proxy').html());
+      newWin.focus();
+    })
   },
 
   /**
