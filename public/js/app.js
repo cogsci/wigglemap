@@ -201,8 +201,8 @@ Diana.prototype = {
     $('#route-info').show();
 
     // Remove old listeners if any
-    $('.route-info .link').off();
-    $('.route-info .link').on('click', function(e) {
+    $('#route-info .link').off();
+    $('#route-info .link').on('click', function(e) {
       var newWin = window.open('');
       newWin.document.write($('#directions-proxy').html());
       newWin.focus();
