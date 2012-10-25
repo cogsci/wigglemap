@@ -1,4 +1,5 @@
 resources/*
 *.DS_Store
 *.swp
-reroute.sublime-workspace*.tm_properties
+reroute.sublime-workspace
+*.tm_properties
