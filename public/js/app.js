@@ -120,6 +120,7 @@ Diana.prototype = {
       routeHelper.play();
       $(e.currentTarget).hide();
       $('#pause').show();
+      $('.route-info').appendTo('#map_canvas');
     });
 
     $('#pause').on('click', function(e) {
