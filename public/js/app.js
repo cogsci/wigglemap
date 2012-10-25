@@ -261,6 +261,8 @@ Diana.prototype = {
     return climb; // TODO: should we allow negatives?
   },
 
+  /* This function is a stupid hack because it's the only metric that requires a
+  service call, so we need to update it separately. TODO: find a better way to do it. */
   updateTotalClimb: function() {
     $('#streetview .climb').html(this.getTotalClimb() + ' ft climb');
   },
