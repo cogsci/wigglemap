@@ -43,13 +43,36 @@
             For Diana
         </h1>
     </header>
-    <div class="route-controls">
-        <div id="safety"></div>
-        <form id="locations" class="locations form-inline">
-            <div class="input-prepend">
-                <span class="add-on">A</span>
-                <input type="text" id="start-location" name="start-location" value="hayes valley, san francisco" placeholder="Start" />
+    <div class="route-wrapper row-fluid">
+
+        <div class="route-controls overlay span9">
+            <!-- Intro/What is this help -->
+            <div class="halp intro row-fluid">
+                <ol>
+                    <li class="span4">
+                        <h2>Visualize route safety.</h2>
+                        <figure>
+                        </figure>
+                    </li>
+                    <li class="span4">
+                        <h2>Adjust routes as you like.</h2>
+                        <figure>
+                        </figure>
+                    </li>
+                    <li class="span4">
+                        <h2>Play a streetview preview.</h2>
+                        <figure>
+                        </figure>
+                    </li>
+                </ol>    
             </div>
+
+            <div id="safety"></div>
+            <form id="locations" class="locations form-inline">
+                <div class="input-prepend">
+                    <span class="add-on">A</span>
+                    <input type="text" id="start-location" name="start-location" value="hayes valley, san francisco" placeholder="Start" />
+                </div>
 
             <div class="input-prepend">
                 <span class="add-on">B</span>
@@ -60,9 +83,9 @@
         </form>
     </div>
 
-    <div id="canvas" class="canvas">
-        <div id="streetview" class="streetview gmap"></div>
-        <div id="map_canvas" class="map-canvas gmap fade"></div>        
+    <div id="canvas" class="canvas faded">
+        <div id="streetview" class="secondary gmap fade"></div>
+        <div id="map_canvas" class="primary gmap fade in"></div>
     </div>
 
     <div class="controls fade">

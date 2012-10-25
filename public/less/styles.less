@@ -28,9 +28,54 @@ header {
     }
 }
 
+.faded {
+    opacity: 0.5;
+}
+
 /**
  * Route controls
  */
+
+.route-info {
+	text-align: center;
+	position: relative;
+	top: 17px;
+}
+
+.route-info .label {
+	font-size: 18px;
+}
+
+.route-controls {
+
+    &.overlay {
+        position: absolute;
+        margin: 0;
+        z-index: 1000;
+        top: 50%;
+
+        .halp {
+            ol {
+                margin: 0;
+
+                li {
+                    display: inline-block;
+                    vertical-align: top;
+
+                    h2 {
+                        font-size: 16px;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        form {
+            background: rgba(0,0,0,0.5);
+            .border-radius(5px);
+        }
+    }
+}
 
 /**
  * Map and Street View canvas
@@ -40,7 +85,8 @@ header {
     position: relative;
 }
 
-.map-canvas {
+// In the corner
+.secondary {
     position: absolute;
     top: 0;
     right: 0;
@@ -48,9 +94,11 @@ header {
     min-width: 250px;
     width: 25%;
     height: 25%;
+    z-index: 5;
 }
 
-.streetview {
+// huuuge
+.primary {
     position: absolute;
     top: 0;
     bottom: 0;
