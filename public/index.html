@@ -85,7 +85,12 @@
     </div>
 
     <div id="canvas" class="canvas faded">
-        <div id="streetview" class="secondary gmap fade"></div>
+        <div id="streetview" class="secondary gmap fade">
+            <div id="route-info" class="over-map">
+                <span class="metrics"></span>
+                <a href="#" class="link">List</a>
+            </div>
+        </div>
         <div id="map_canvas" class="primary gmap fade in"></div>
     </div>
 
@@ -115,11 +120,5 @@
     
     <div id="directions-proxy" style="display:none;"></div>
 
-    <script id="routeInfo" type="text/html">
-      <div class="route-info over-map">
-        <span class="distance">{{distance}}</span>, <span class="time">{{time}}</span>
-        <a href="#" class="link">List</a>
-      </div>
-    </script>
 </body>
 </html>

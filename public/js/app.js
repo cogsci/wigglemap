@@ -150,11 +150,11 @@ Diana.prototype = {
     // routeHelper.collapseVertices(this.overviewPoly);
     // Simplified route steps for getting crime data, etc.
     this.updateRouteSteps();
-    this.calcCrimeCounts();
+    // this.calcCrimeCounts(); (commented out since not being used anyways)
+    this.calcElevations();
     this.calcAccidentCounts();
     this.insertProgressBar();
     // Init the street view and set to first point
-    this.calcElevations();
 
     // @TODO: Don't do this every time, just update instead of init
     this.initStreetView();
@@ -185,18 +185,29 @@ Diana.prototype = {
   },
 
   updateRouteInfo: function() {
-    ich.routeInfo({
+
+    var routeInfo = {
       time: this.directionsDisplay.getDirections().routes[0].legs[0].duration.text,
-      distance: this.directionsDisplay.getDirections().routes[0].legs[0].distance.text
-    }).appendTo('#streetview');
-    
+      distance: this.directionsDisplay.getDirections().routes[0].legs[0].distance.text,
+      climb: this.getTotalClimb() + ' ft climb'
+    };
+
+    var routeInfoHtml = [];
+    for (i in routeInfo) {
+      routeInfoHtml.push('<span class="' + i + '">' + routeInfo[i] + '</span>');
+    }
+
+    $('#route-info .metrics').html(routeInfoHtml.join(', '));
+    $('#route-info').show();
+
     // Remove old listeners if any
     $('.route-info .link').off();
     $('.route-info .link').on('click', function(e) {
       var newWin = window.open('');
       newWin.document.write($('#directions-proxy').html());
       newWin.focus();
-    })
+    });
+
   },
 
   /**
@@ -240,8 +251,18 @@ Diana.prototype = {
     var self = this;
     this.serviceCall('get_crime_counts', {steps: JSON.stringify(self.routeSteps)}, function(data) {
       self.crimes = data;
-      self.updateSafetyRating();
     }, {mimeType: 'application/json;charset=UTF-8'});
+  },
+
+  /* Returns the total climb of the trip by summing the changes in elevations */
+  getTotalClimb: function() {
+    var climb = 0;
+    for (i in this.elevations) climb += this.elevations[i];
+    return climb; // TODO: should we allow negatives?
+  },
+
+  updateTotalClimb: function() {
+    $('#streetview .climb').html(this.getTotalClimb() + ' ft climb');
   },
 
   /* Calculate the number of feet needed to climb from point A to point B */
@@ -249,8 +270,10 @@ Diana.prototype = {
     var self = this;
     this.serviceCall('get_elevations_list', {steps: JSON.stringify(self.routeSteps)}, function(data) {
       self.elevations = data;
+      self.updateTotalClimb();
     }, {mimeType: 'application/json;charset=UTF-8'});
   },
+
 
   calcAccidentCounts: function() {
     var self = this;
