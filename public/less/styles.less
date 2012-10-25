@@ -32,16 +32,6 @@ header {
  * Route controls
  */
 
-.route-info {
-	text-align: center;
-	position: relative;
-	top: 17px;
-}
-
-.route-info .label {
-	font-size: 18px;
-}
-
 /**
  * Map and Street View canvas
  */
@@ -133,6 +123,29 @@ header {
     background-color:#31A354;
 }
 
+/**
+ * Route info over map
+ */
+.over-map {
+  position: relative;
+  z-index: 99;
+}
+
+.route-info {
+  top: 218px;
+  background: black;
+  color: white;
+  opacity: 0.8;
+  padding: 6px;
+  width: 100%;
+}
+
+.route-info .link {
+  background: white;
+  color: black;
+  padding: 3px 7px;
+  margin-left: 10px;
+}
 /**
  * Icons
  */

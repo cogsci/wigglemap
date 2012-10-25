@@ -170,8 +170,10 @@ Diana.prototype = {
     },
 	
     updateRouteInfo: function() {
-        $('.time').text(this.directionsDisplay.getDirections().routes[0].legs[0].duration.text).show();
-        $('.distance').text(this.directionsDisplay.getDirections().routes[0].legs[0].distance.text).show();
+      ich.routeInfo({
+        time: this.directionsDisplay.getDirections().routes[0].legs[0].duration.text,
+        distance: this.directionsDisplay.getDirections().routes[0].legs[0].distance.text
+      }).appendTo('#map_canvas');
     },
 	
     /**
