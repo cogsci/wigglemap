@@ -1,0 +1,13 @@
+{
+    "folders":
+    [
+        {
+            "path": ".",
+            "name": "Root",
+            "file_exclude_patterns": ["*sublime-*", "config.rb", "favicon.ico"]
+        }
+    ],
+    "settings": {
+        "tab_size": 2
+    }
+ }

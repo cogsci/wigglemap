@@ -36,27 +36,33 @@
       })();
     </script>
 </head>
-<body class="row-fluid">
+<body>
     <header class="masthead">
         <h1>
             For Diana
         </h1>
     </header>
-    <div class="route-controls">
-        <div id="safety"></div>
-        <form id="locations" class="locations form-inline">
-            <div class="input-prepend">
-                <span class="add-on">A</span>
-                <input type="text" id="start-location" name="start-location" value="hayes valley, san francisco" placeholder="Start" />
-            </div>
+    <div class="row-fluid">
+        <div class="route-info span2">
+            <span class="time label" style="display:none;"></span>
+            <span class="distance label" style="display:none;"></span>
+        </div>
+        <div class="route-controls span9">
+            <div id="safety"></div>
+            <form id="locations" class="locations form-inline">
+                <div class="input-prepend">
+                    <span class="add-on">A</span>
+                    <input type="text" id="start-location" name="start-location" value="hayes valley, san francisco" placeholder="Start" />
+                </div>
 
-            <div class="input-prepend">
-                <span class="add-on">B</span>
-                <input type="text" id="end-location" name="end-location" value="4th and king, san francisco" placeholder="End" />
-            </div>
+                <div class="input-prepend">
+                    <span class="add-on">B</span>
+                    <input type="text" id="end-location" name="end-location" value="4th and king, san francisco" placeholder="End" />
+                </div>
 
-            <input type="submit" id="submit-button" class="btn btn-primary" value="Route me!" />
-        </form>
+                <input type="submit" id="submit-button" class="btn btn-primary" value="Route me!" />
+            </form>
+        </div>
     </div>
 
     <div id="canvas" class="canvas">
