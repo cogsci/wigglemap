@@ -164,10 +164,16 @@ Diana.prototype = {
         this.directionsService.route(request, _.bind(function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 self.directionsDisplay.setDirections(response);
+                self.updateRouteInfo();
             }
         }, this));
     },
-
+	
+    updateRouteInfo: function() {
+        $('.time').text(this.directionsDisplay.getDirections().routes[0].legs[0].duration.text).show();
+        $('.distance').text(this.directionsDisplay.getDirections().routes[0].legs[0].distance.text).show();
+    },
+	
     /**
      * Store the list of steps concisely; Google gives a push of information we don't want.
      */
