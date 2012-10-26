@@ -27,13 +27,13 @@
       })();
     </script>
 </head>
-<body>
-    <header class="masthead">
+<body class="intro">
+    <header class="masthead transition">
         <h1>wiggle</h1>
     </header>
-    <div class="route-wrapper row-fluid">
+    <div class="route-wrapper">
 
-        <div class="route-controls overlay span9">
+        <div class="route-controls overlay">
             <!-- Intro/What is this help -->
             <div class="halp intro row-fluid">
                 <ol>
@@ -56,17 +56,29 @@
             </div>
 
             <form id="locations" class="locations form-inline">
-                <div class="input-prepend">
-                    <span class="add-on">A</span>
-                    <input type="text" id="start-location" name="start-location" value="hayes valley, san francisco" placeholder="Start" />
+                <div class="control-group">
+                    <label for="start-location" class="halp">
+                        Start
+                    </label>
+
+                    <div class="input-prepend">
+                        <span class="add-on">A</span>
+                        <input type="text" id="start-location" name="start-location" class="start-location span5" value="hayes valley, san francisco" placeholder="Start" />
+                    </div>
                 </div>
 
-                <div class="input-prepend">
-                    <span class="add-on">B</span>
-                    <input type="text" id="end-location" name="end-location" value="4th and king, san francisco" placeholder="End" />
+                <div class="control-group">
+                    <label for="end-location" class="halp">
+                        End
+                    </label>
+
+                    <div class="input-prepend">
+                        <span class="add-on">B</span>
+                        <input type="text" id="end-location" class="end-location span5" name="end-location" value="4th and king, san francisco" placeholder="End" />
+                    </div>
                 </div>
 
-                <input type="submit" id="submit-button" class="btn btn-primary" value="Route me!" />
+                <input type="submit" id="submit-button" class="btn btn-primary span2" value="Go" />
             </form>
         </div>
     </div>
@@ -78,7 +90,7 @@
                 <a href="#" class="link">List</a>
             </div>
         </div>
-        <div id="map_canvas" class="primary gmap fade in"></div>
+        <div id="map_canvas" class="primary gmap"></div>
     </div>
 
     <div class="controls fade">

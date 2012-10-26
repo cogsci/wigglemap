@@ -1,4 +1,7 @@
 @import "bootstrap/bootstrap.less";
+@import "bootstrap/responsive.less";
+
+@cubic: cubic-bezier(0.665, 0, 0.43, 1);
 
 html, body {
     height: 100%;
@@ -11,7 +14,7 @@ body {
 
 form {
     margin: 0;
-    text-align: center;
+    text-align: left;
     padding: 12px;
 }
 
@@ -26,15 +29,30 @@ header {
         margin-top: 0;
         margin-left: @fluidGridGutterWidth;
     }
+
+    &.masthead.transition {
+        .transition(padding 1.2s @cubic);
+    }
 }
 
 .faded {
-    opacity: 0.5;
+    > div {
+        opacity: 0.3;
+        .transition(opacity 0.4s @cubic);
+    }
+
+    &.in > div {
+        opacity: 1;
+    }
 }
 
 /**
  * Route controls
  */
+
+.route-wrapper {
+    text-align: center;
+}
 
 .route-info {
 	text-align: center;
@@ -47,14 +65,46 @@ header {
 }
 
 .route-controls {
+    @routeInputFontSize: 20px;
+
+    display: inline-block !important;
+    .transition(all 1.2s @cubic);
+
+    .control-group {
+        display: inline-block;
+        vertical-align: baseline;
+        margin-bottom: 0;
+    }
+
+    .input-prepend {
+        .add-on,
+        input {
+            font-size: @routeInputFontSize;
+        }
+    }
+
+    label {
+        display: block;
+    }
+
+    .btn {
+        font-size: @routeInputFontSize;
+    }
+
+    .halp {
+        display: none;
+    }
 
     &.overlay {
         position: absolute;
         margin: 0;
         z-index: 1000;
-        top: 50%;
+        top: 25%;
 
         .halp {
+            display: block;
+            color: #fff;
+
             ol {
                 margin: 0;
 
@@ -71,8 +121,10 @@ header {
         }
 
         form {
+            .transition(background-color 0.4s @cubic);
             background: rgba(0,0,0,0.5);
             .border-radius(5px);
+            padding: 20px;
         }
     }
 }
@@ -83,6 +135,8 @@ header {
 
 .canvas {
     position: relative;
+    background-color: #333;
+    .transition(all 0.7s);
 }
 
 // In the corner
@@ -147,28 +201,46 @@ header {
 
     table {
         width: 100%;
-        height: 150px;
+        height: 100%;
+        border-collapse: separate;
+        border-spacing: 0 5px;
     }
 
     td {
         .box-shadow(inset 0 0 2px rgba(0, 0, 0, 0.5));
+        .transition(border 0.4s @cubic);
+        border-top: 5px solid #fff;
     }
 
    .highlighted {
-     border: 5px solid red;
+        border-top-width: 0;
+        .border-top-left-radius(4px);
+        .border-top-right-radius(4px);
    }
 }
 
 .red {
-    background-color:#E5F5E0;
+    background-color: #E5F5E0;
+
+    &.highlighted {
+        background-color: spin(lighten(#E5F5E0, 3%), -4);
+    }
 }
 
 .yellow {
-    background-color:#A1D99B;
+    background-color: #A1D99B;
+
+    &.highlighted {
+        background-color: spin(lighten(#A1D99B, 3%), -4);
+    }
 }
 
 .green {
-    background-color:#31A354;
+    background-color: #31A354;
+
+    &.highlighted {
+        background-color: spin(lighten(#31A354, 3%), -4);
+    }
 }
 
 /**

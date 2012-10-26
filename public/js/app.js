@@ -22,7 +22,13 @@ var Diana = function() {
 
   // Normal map
   this.map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-
+  
+  // Hacks, trigger resize since we have a transition on the height of the
+  // container.
+  // @TODO: Add transition via class after map instantiation
+  setTimeout(_.bind(function() {
+    google.maps.event.trigger(diana.map, 'resize');
+  }, this), 700)
   // Directions renderer, goes on the map
   this.directionsDisplay = new google.maps.DirectionsRenderer({
     draggable: true
@@ -95,11 +101,32 @@ Diana.prototype = {
       if (!start || !end) return;
 
       // Show controls and map
-      // So hacky @TODO: Make not bad
+      // So hacky @TODO: Make not bad and only occur once
       $('.controls, .secondary').addClass('in');
-      $('.halp').hide();
-      $('.route-controls').removeClass('overlay');
-      $('.canvas').removeClass('faded');
+
+      $('.halp')
+        .fadeOut(300)
+        .slideUp(300);
+
+      $('.route-controls')
+        .css('top', '42px')
+        .find('form')
+          .css('background-color', 'rgba(0,0,0,0)');
+
+      $('.masthead').css('padding-bottom', '54px');
+
+      // @TODO: Only occur once, convert to function with above calls to some
+      // kind of state swapper between intro and normal
+      // After 1.2s because that's how long the transitions are in CSS
+      setTimeout(function() {
+        $('.route-controls').removeClass('overlay');
+        $('.masthead')
+          .removeClass('transition')
+          .css('padding-bottom', '0');
+        self._resizeCanvas();
+        google.maps.event.trigger(diana.map, 'resize');
+        $('.canvas').removeClass('faded');
+      }, 1200);
 
       self._resizeCanvas();
 
