@@ -10,6 +10,10 @@ var Diana = function() {
   // which would make several google api calls, therein.
   this.mutei = {};
 
+  this.geocoder = new google.maps.Geocoder();
+
+  this.setStartLocation();
+
   var mapOptions = {
     center: new google.maps.LatLng(37.774599,-122.42456),
     zoom: 14,
@@ -48,12 +52,29 @@ var Diana = function() {
 };
 
 Diana.prototype = {
+
   getStartLocation: function() {
     return $('#start-location').val();
   },
 
   getEndLocation: function() {
     return $('#end-location').val();
+  },
+
+  /* Gets the client's location from geolocation API, then gets address from google */
+  setStartLocation: function() {
+    var self = this;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        self.geocoder.geocode({'latLng': latlng}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            var currentLocation = results[0];
+            $('#start-location').val(currentLocation.formatted_address);
+          }
+        });
+      });
+    }
   },
 
   toggleStreetView: function() {
