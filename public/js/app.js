@@ -201,6 +201,7 @@ Diana.prototype = {
     // this.calcCrimeCounts(); (commented out since not being used anyways)
     this.calcElevations();
     this.calcAccidentCounts();
+    this.updateRouteInfo();
     this.insertProgressBar();
     // Init the street view and set to first point
 
@@ -227,7 +228,6 @@ Diana.prototype = {
     this.directionsService.route(request, _.bind(function(response, status) {
       if (status == google.maps.DirectionsStatus.OK) {
         self.directionsDisplay.setDirections(response);
-        self.updateRouteInfo();
       }
     }, this));
   },
