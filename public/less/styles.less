@@ -1,10 +1,23 @@
-@import "bootstrap/bootstrap.less";
-@import "bootstrap/responsive.less";
+// Import customized bootstrap files
+@import "bootstrap.less";
+// @import "responsive.less";
 
+// Transition function for bezier love
 @cubic: cubic-bezier(0.665, 0, 0.43, 1);
+
+// z-indexes
+@zindexMap: 1;
+@zindexOverMap: 5;
+
+// Make something be over the primary map
+.over-map {
+    position: relative;
+    z-index: @zindexOverMap;
+}
 
 html, body {
     height: 100%;
+    background-color: #fbfbfb;
 }
 
 body {
@@ -25,8 +38,13 @@ form {
 }
 
 header {
+    padding: 10px 0;
+    position: relative;
+    z-index: @zindexOverMap + 1;
+    .box-shadow(0 4px 0 rgba(0,0,0, 0.18));
+
     h1 {
-        margin-top: 0;
+        margin: 0;
         margin-left: @fluidGridGutterWidth;
     }
 
@@ -37,12 +55,14 @@ header {
 
 .faded {
     > div {
-        opacity: 0.3;
+        .opacity(65);
+        -webkit-filter: blur(2px);
         .transition(opacity 0.4s @cubic);
     }
 
     &.in > div {
-        opacity: 1;
+        -webkit-filter: none;
+        .opacity(100);
     }
 }
 
@@ -50,7 +70,17 @@ header {
  * Route controls
  */
 
+.controls {
+    z-index: @zindexOverMap + 1;
+    .box-shadow(0 -4px 0 rgba(0,0,0,0.15));
+}
+
 .route-wrapper {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
 }
 
@@ -77,9 +107,23 @@ header {
     }
 
     .input-prepend {
+        position: relative;
+        margin-bottom: 0;
+
         .add-on,
         input {
             font-size: @routeInputFontSize;
+        }
+
+        .add-on {
+            width: 17px;
+        }
+
+        input[type="text"] {
+            width: auto;
+            position: absolute;
+            right: 0;
+            left: 27px;
         }
     }
 
@@ -88,7 +132,8 @@ header {
     }
 
     .btn {
-        font-size: @routeInputFontSize;
+        width: 100%;
+        font-size: @routeInputFontSize - 2px;
     }
 
     .halp {
@@ -97,26 +142,24 @@ header {
 
     &.overlay {
         position: absolute;
+        width: 100%;
         margin: 0;
-        z-index: 1000;
-        top: 25%;
+        z-index: @zindexOverMap + 1;
+        top: 100px;
 
         .halp {
             display: block;
             color: #fff;
 
-            ol {
-                margin: 0;
+            h2 {
+                text-align: left;
+                text-shadow: 0 0 8px rgba(0,0,0, 0.8);
+            }
+        }
 
-                li {
-                    display: inline-block;
-                    vertical-align: top;
-
-                    h2 {
-                        font-size: 16px;
-                        text-align: center;
-                    }
-                }
+        @media (min-width: 768px) {
+            label.halp {
+                display: none;
             }
         }
 
@@ -129,6 +172,7 @@ header {
         }
 
         form {
+            overflow: hidden;
             .transition(background-color 0.4s @cubic);
             background: rgba(0,0,0,0.5);
             .border-radius(5px);
@@ -156,7 +200,7 @@ header {
     min-width: 250px;
     width: 25%;
     height: 25%;
-    z-index: 5;
+    z-index: @zindexOverMap;
 }
 
 // huuuge
@@ -251,14 +295,6 @@ header {
     }
 }
 
-/**
- * Route info over map
- */
-.over-map {
-  position: relative;
-  z-index: 99;
-}
-
 #route-info {
   top: 218px;
   background: black;
@@ -275,9 +311,9 @@ header {
   padding: 3px 7px;
   margin-left: 10px;
 }
-/**
- * Icons
- */
+
+ // Icons
+ //---------------------------------------------------------------------------/
 
 @font-face {
     font-family: 'reroute';

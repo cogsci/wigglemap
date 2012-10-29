@@ -123,7 +123,7 @@ Diana.prototype = {
 
       // Show controls and map
       // So hacky @TODO: Make not bad and only occur once
-      $('.controls, .secondary').addClass('in');
+      $('.play-controls, .secondary').addClass('in');
 
       $('.halp')
         .fadeOut(300)

@@ -29,65 +29,74 @@
 </head>
 <body class="intro">
     <header class="masthead transition">
-        <h1>wiggle</h1>
-    </header>
-    <div class="route-wrapper">
+        <h1>WiggleMap</h1>
 
-        <div class="route-controls overlay">
-            <!-- Intro/What is this help -->
-            <div class="halp intro">
-                <ol>
-                    <li class="">
-                        <h2>Visualize route safety.</h2>
-                        <figure>
-                            <img src="images/vis.png" />
-                        </figure>
-                    </li>
-                    <li class="">
-                        <h2>Adjust routes as you like.</h2>
-                        <figure>
-                            <img src="images/route.png" />
-                        </figure>
-                    </li>
-                    <li class="">
-                        <h2>Play a streetview preview.</h2>
-                        <figure>
-                            <img src="images/play.png" />
-                        </figure>
-                    </li>
-                </ol>    
+        <div class="route-wrapper">
+
+            <div class="route-controls overlay">
+                <!-- Intro/What is this help -->
+                <div class="halp intro">
+                    <h2>
+                        There's a safe bike route just for you out there.<br />
+                        Find it here.
+                    </h2>
+    <!--                 <ol>
+                        <li class="">
+                            <h2>Visualize route safety.</h2>
+                            <figure>
+                                <img src="images/vis.png" />
+                            </figure>
+                        </li>
+                        <li class="">
+                            <h2>Adjust routes as you like.</h2>
+                            <figure>
+                                <img src="images/route.png" />
+                            </figure>
+                        </li>
+                        <li class="">
+                            <h2>Play a streetview preview.</h2>
+                            <figure>
+                                <img src="images/play.png" />
+                            </figure>
+                        </li>
+                    </ol>   -->  
+                </div>
+
+                <div class="row-fluid">
+                    <form id="locations" class="locations">
+                        <div class="control-group span5">
+                            <label for="start-location" class="halp">
+                                Start
+                            </label>
+
+                            <div class="input-prepend">
+                                <span class="add-on">A</span>
+                                <input type="text" id="start-location" name="start-location" class="start-location" value="hayes valley, san francisco" placeholder="Start" />
+                            </div>
+                        </div>
+
+                        <div class="control-group span5">
+                            <label for="end-location" class="halp">
+                                End
+                            </label>
+
+                            <div class="input-prepend">
+                                <span class="add-on">B</span>
+                                <input type="text" id="end-location" class="end-location" name="end-location" value="4th and king, san francisco" placeholder="End" />
+                            </div>
+                        </div>
+
+                        <div class="control-group span2">
+                            <input type="submit" id="submit-button" class="btn btn-primary" value="Find a route" />
+                        </div>
+                    </form>
+                </div>
             </div>
-
-            <form id="locations" class="locations form-inline">
-                <div class="control-group">
-                    <label for="start-location" class="halp">
-                        Start
-                    </label>
-
-                    <div class="input-prepend">
-                        <span class="add-on">A</span>
-                        <input type="text" id="start-location" name="start-location" class="start-location span5" value="hayes valley, san francisco" placeholder="Start" />
-                    </div>
-                </div>
-
-                <div class="control-group">
-                    <label for="end-location" class="halp">
-                        End
-                    </label>
-
-                    <div class="input-prepend">
-                        <span class="add-on">B</span>
-                        <input type="text" id="end-location" class="end-location span5" name="end-location" value="4th and king, san francisco" placeholder="End" />
-                    </div>
-                </div>
-
-                <input type="submit" id="submit-button" class="btn btn-primary span2" value="Go" />
-            </form>
         </div>
-    </div>
+    </header>
 
     <div id="canvas" class="canvas faded">
-        <div id="streetview" class="secondary gmap fade">
+        <div id="streetview" class="secondary gmap over-map fade">
             <div id="route-info" class="over-map">
                 <span class="metrics"></span>
                 <a href="#" class="link">List</a>
@@ -96,8 +105,8 @@
         <div id="map_canvas" class="primary gmap"></div>
     </div>
 
-    <div class="controls fade">
-        <div class="play-controls">
+    <div class="controls">
+        <div class="play-controls fade">
             <a id="play" class="btn btn-primary btn-large">
                 <i class="icon icon-play"></i> Play
             </a>
