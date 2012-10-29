@@ -252,9 +252,10 @@ Diana.prototype = {
     $('#route-info .link').off();
     $('#route-info .link').on('click', function(e) {
       var newWin = window.open('');
+      newWin.document.write('<head><title>'+ 'Bike directions from ' + this.getStartLocation() + ' to ' + this.getEndLocation() + '</title></head>');
       newWin.document.write($('#directions-proxy').html());
       newWin.focus();
-    });
+    }.bind(this));
 
   },
 
