@@ -26,6 +26,8 @@ var Diana = function() {
 
   // Normal map
   this.map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+  var bikeLayer = new google.maps.BicyclingLayer();
+  bikeLayer.setMap(this.map);
   
   // Hacks, trigger resize since we have a transition on the height of the
   // container.
