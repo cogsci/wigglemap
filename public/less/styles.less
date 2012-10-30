@@ -115,13 +115,17 @@ header {
         .add-on,
         input {
             font-size: @routeInputFontSize;
+            padding-top: 10px;
+            padding-bottom: 10px;
         }
 
         .add-on {
             width: 17px;
+            .border-radius(2px 0 0 2px);
         }
 
-        input[type="text"] {
+        input {
+            .border-radius(0 2px 2px 0);
             width: auto;
             position: absolute;
             right: 0;
@@ -159,7 +163,7 @@ header {
             }
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 481px) {
             label.halp {
                 display: none;
             }
