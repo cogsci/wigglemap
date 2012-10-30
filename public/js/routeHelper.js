@@ -168,7 +168,7 @@ var routeHelper = {
             if (routeHelper.jumpToNextVertex() == false) {
                 routeHelper.pause();
             }
-        }, 1800);
+        }, 3000);
      },
 
      pause: function() {
