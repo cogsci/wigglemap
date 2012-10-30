@@ -229,24 +229,20 @@ header {
 .controls {
     position: absolute;
     bottom: 0;
-    height: 83px; //@fluidGridColumnWidth + @fluidGridGutterWidth;
+    height: 40px; //@fluidGridColumnWidth + @fluidGridGutterWidth;
     width: 100%;
+    padding: 10px 10px 0px 10px;
+    margin-bottom: 10px;
 }
 
 .play-controls {
-    text-align: center;
-    width: 150px;
-    height: 83px;
-
-    .btn-primary {
-        margin-top: 5px;
-    }
+    text-align: left;
+    width: 275px;
 }
 
 #play,
 #pause {
     width: 100px;
-    margin-bottom: 5px;
 }
 
 #next, #prev {
@@ -257,9 +253,9 @@ header {
     margin: 0;
     position: absolute;
     bottom: 0;
-    right: 0;
+    right: 40px;
     height: 100%;
-    left: 150px;
+    left: 280px;
 
     table {
         width: 100%;
