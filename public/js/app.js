@@ -138,6 +138,7 @@ Diana.prototype = {
 
       $('.masthead').css('padding-bottom', '54px');
 
+
       // @TODO: Only occur once, convert to function with above calls to some
       // kind of state swapper between intro and normal
       // After 1.2s because that's how long the transitions are in CSS
@@ -149,6 +150,7 @@ Diana.prototype = {
         self._resizeCanvas();
         google.maps.event.trigger(diana.map, 'resize');
         $('.canvas').removeClass('faded');
+        $('.secondary').fadeIn();
       }, 1200);
 
       self._resizeCanvas();

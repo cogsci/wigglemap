@@ -154,7 +154,8 @@ var routeHelper = {
      play: function() {
         $('#map_canvas')
           .removeClass('primary')
-          .addClass('secondary');
+          .addClass('secondary')
+          .fadeIn();
 
         $('#streetview')
           .removeClass('secondary')
