@@ -144,7 +144,7 @@ var routeHelper = {
     var closest = {Ya: 0, Za: 0};
     var closestIdx = -1;
     var steps = diana.currentRoute.routes[0].legs[0].steps;
-    var starting_point = {Ya: steps[pathNum].start_location.lat(), Za: stepspathNum].start_location.lng()};
+    var starting_point = {Ya: steps[pathNum].start_location.lat(), Za: steps[pathNum].start_location.lng()};
     var i;
     for (i = 0; i < diana.overviewPath.length; i++) {
       if (this.latLngDistance(diana.overviewPath[i], starting_point) < thislatLngDistance(closest, starting_point)) {
@@ -294,7 +294,7 @@ var routeHelper = {
       unit = "ft";
     }
     if (route.getStep(currentStep + 1) != undefined) {
-      showInstruction('In ' + uiDistance + ' ' + unit + ': ' + route.getStepcurrentStep + 1).getDescriptionHtml());
+      showInstruction('In ' + uiDistance + ' ' + unit + ': ' + (route.getStepcurrentStep + 1).getDescriptionHtml());
     } else {
       showInstruction('In ' + uiDistance + ' ' + unit + ': You will reachyour destination');
     }
