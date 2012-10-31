@@ -9,6 +9,12 @@
 @zindexMap: 1;
 @zindexOverMap: 5;
 
+// border-box all the inputs
+// TODO: Apply to all the things;
+input,
+textarea,
+.add-on { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
 // Make something be over the primary map
 .over-map {
     position: relative;
@@ -135,14 +141,21 @@ header {
         }
 
         .add-on {
-            width: 17px;
+            width: 27px;
+            height: 42px;
             .border-radius(2px 0 0 2px);
         }
 
         input {
             .border-radius(0 2px 2px 0);
-            width: auto;
+            width: 100%;
+            height: 42px;
+            margin-left: -1px;
+        }
+
+        .input-wrap {
             position: absolute;
+            top: 0;
             right: 0;
             left: 27px;
         }
@@ -167,6 +180,7 @@ header {
         margin: 0;
         z-index: @zindexOverMap + 1;
         top: 100px;
+        left: 0;
 
         .halp {
             display: block;
@@ -180,13 +194,22 @@ header {
             line-height: 1.5;
         }
 
-        input {
-            font-size: 12px;
-        }
-
         @media (min-width: 481px) {
             label.halp {
                 display: none;
+            }
+        }
+
+        @media (max-width: 799px) {
+            .control-group {
+                display: block;
+                margin: 10px 0;
+                width: auto;
+                float: none;
+            }
+
+            .add-on {
+                line-height: 30px;
             }
         }
 
