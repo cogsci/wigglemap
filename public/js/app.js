@@ -152,6 +152,8 @@ Diana.prototype = {
         google.maps.event.trigger(diana.map, 'resize');
         $('.canvas').removeClass('faded');
         $('.secondary').fadeIn();
+        // Start Joyride Tour
+        $("#wiggleTour").joyride();
       }, 1200);
 
       self._resizeCanvas();

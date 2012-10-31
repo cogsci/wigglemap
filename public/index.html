@@ -3,12 +3,15 @@
 <head>
     <title>wiggle</title>
     <link rel="stylesheet/less" type="text/css" href="less/styles.less">
+    <link rel=" stylesheet" type="text/css" href="styles/joyride-2.0.1.css">
     <script src="js/lib/less/less.min.js" type="text/javascript"></script>
     <script src="js/jquery.js"></script>
     <script src="js/lib/lodash/lodash.min.js"></script>
     <script src="js/lib/lodash/mixins.js"></script>
     <script src="js/routeHelper.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/jquery.joyride-2.0.1.js"></script>
+    <script src="js/jquery.cookie.js"></script>
   
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
@@ -121,5 +124,14 @@
     </div>
     <div id="directions-proxy" style="display:none;"></div>
 
+    <!-- Joyride First run tour script -->
+    <!--   /* Each tip is set within this <ol>. */
+    /* This creates the order the tips are displayed */ -->    
+    <ol id="wiggleTour">
+      <li data-id="progress-bar">Tip content...</li>
+      <li>Tip content...</li>
+      <li data-class="play-controls" data-options="tipLocation:top;tipAnimation:fade" data-button="Second Button">Content...</li>   
+      <li>Welcome...</li>
+    </ol>
 </body>
 </html>
