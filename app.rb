@@ -38,5 +38,5 @@ post '/get_accident_counts' do
 end
 
 get '/' do
-  redirect '/index.html'
+  erb :main
 end
