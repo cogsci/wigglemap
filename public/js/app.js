@@ -153,7 +153,14 @@ Diana.prototype = {
         $('.canvas').removeClass('faded');
         $('.secondary').fadeIn();
         // Start Joyride Tour
-        $("#joyRideTipContent").joyride();
+        $("#joyRideTipContent").joyride({
+          'scrollSpeed': 300,              // Page scrolling speed in ms
+          'nextButton': true,              // true/false for next button visibility
+          'tipAnimation': 'fade',           // 'pop' or 'fade' in each tip
+          'cookieMonster': true,           // true/false for whether cookies are used
+          'cookieName': 'JoyRide',         // choose your own cookie name
+          'cookieDomain': false            // set to false or yoursite.com
+        });
       }, 1200);
 
       self._resizeCanvas();
