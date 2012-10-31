@@ -77,15 +77,23 @@ header {
 
 .route-wrapper {
     position: relative;
-    width: 90%;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
-}
+    margin: @fluidGridGutterWidth;
 
-.route-wrapper.header {
-    width: auto;
+    form {
+        padding: 0;
+    }
+
+    &.overlay {
+        width: 90%;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+
+        form {
+            padding: 20px;
+        }
+    }
 }
 
 .route-info {
@@ -119,8 +127,11 @@ header {
         .add-on,
         input {
             font-size: @routeInputFontSize;
-            padding-top: 10px;
-            padding-bottom: 10px;
+
+            @media (min-width: 800px) {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
         }
 
         .add-on {
@@ -150,7 +161,7 @@ header {
         display: none;
     }
 
-    &.overlay {
+    .overlay & {
         position: absolute;
         width: 100%;
         margin: 0;
@@ -160,16 +171,32 @@ header {
         .halp {
             display: block;
             color: #fff;
+        }
 
-            h2 {
-                text-align: left;
-                text-shadow: 0 0 8px rgba(0,0,0, 0.8);
-            }
+        h2 {
+            text-align: left;
+            text-shadow: 0 0 8px rgba(0,0,0, 0.8);
+            font-size: 28px;
+            line-height: 1.5;
+        }
+
+        input {
+            font-size: 12px;
         }
 
         @media (min-width: 481px) {
             label.halp {
                 display: none;
+            }
+        }
+
+        @media (min-width: 800px) {
+            h2 {
+                font-size: 40px;
+            }
+
+            input {
+                font-size: 18px;
             }
         }
 
@@ -183,7 +210,7 @@ header {
 
         form {
             overflow: hidden;
-            .transition(background-color 0.4s @cubic);
+            .transition(all 0.4s @cubic);
             background: rgba(0,0,0,0.5);
             .border-radius(5px);
             padding: 20px;

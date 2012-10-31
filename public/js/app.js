@@ -134,7 +134,10 @@ Diana.prototype = {
       $('.route-controls')
         .css('top', '42px')
         .find('form')
-          .css('background-color', 'rgba(0,0,0,0)');
+          .css({
+            'background-color': 'rgba(0,0,0,0)',
+            'padding': 0
+          });
 
       $('.masthead').css('padding-bottom', '54px');
 
@@ -143,8 +146,7 @@ Diana.prototype = {
       // kind of state swapper between intro and normal
       // After 1.2s because that's how long the transitions are in CSS
       setTimeout(function() {
-        $('.route-controls').removeClass('overlay');
-        $('.route-wrapper').addClass('header');
+        $('.route-wrapper').removeClass('overlay');
         $('.masthead')
           .removeClass('transition')
           .css('padding-bottom', '0');
