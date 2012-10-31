@@ -133,7 +133,7 @@ var routeHelper = {
       *
       * @param {Number} i Index of step that is displayed on map/streetview
       */
-      
+
      highlightStep: function(i) {
       var $currentStep = $("#progress-bar table td:eq(" + i + ")");
       if ($currentStep.hasClass('highlighted')) return;
@@ -175,9 +175,10 @@ var routeHelper = {
         
         diana.map.setZoom(17);
         this.playing = setInterval(function() {
-            if (routeHelper.jumpToNextVertex() == false) {
-                routeHelper.pause();
-            }
+          // Stop when there is no more vertexes left in the path
+          if (routeHelper.jumpToNextVertex() == false) {
+              routeHelper.pause();
+          }
         }, 3000);
      },
 
