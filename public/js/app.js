@@ -144,6 +144,7 @@ Diana.prototype = {
       // After 1.2s because that's how long the transitions are in CSS
       setTimeout(function() {
         $('.route-controls').removeClass('overlay');
+        $('.route-wrapper').addClass('header');
         $('.masthead')
           .removeClass('transition')
           .css('padding-bottom', '0');
