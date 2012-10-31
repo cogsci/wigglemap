@@ -153,7 +153,7 @@ Diana.prototype = {
         $('.canvas').removeClass('faded');
         $('.secondary').fadeIn();
         // Start Joyride Tour
-        $("#wiggleTour").joyride();
+        $("#joyRideTipContent").joyride();
       }, 1200);
 
       self._resizeCanvas();
