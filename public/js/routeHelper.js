@@ -127,9 +127,19 @@ var routeHelper = {
         this.jumpToVertex(nextVertexId - 2); 
      },
 
+
+     /**
+      * Highlight the current step in the timeline
+      *
+      * @param {Number} i Index of step that is displayed on map/streetview
+      */
+      
      highlightStep: function(i) {
+      var $currentStep = $("#progress-bar table td:eq(" + i + ")");
+      if ($currentStep.hasClass('highlighted')) return;
+
       $(".highlighted").removeClass("highlighted");
-      $("#progress-bar table td:eq("+i+")").addClass("highlighted");
+      $currentStep.addClass("highlighted");
      },
 
      findClosestVertexByPathNum: function(pathNum) {
