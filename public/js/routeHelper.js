@@ -147,7 +147,7 @@ var routeHelper = {
     var starting_point = {Ya: steps[pathNum].start_location.lat(), Za: steps[pathNum].start_location.lng()};
     var i;
     for (i = 0; i < diana.overviewPath.length; i++) {
-      if (this.latLngDistance(diana.overviewPath[i], starting_point) < thislatLngDistance(closest, starting_point)) {
+      if (this.latLngDistance(diana.overviewPath[i], starting_point) < this.latLngDistance(closest, starting_point)) {
         closest = diana.overviewPath[i];
         closestIdx = i;
       }
