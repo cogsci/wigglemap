@@ -100,7 +100,7 @@ Diana.prototype = {
     var height = $(window).height();
     var $canvas = $('#canvas');
 
-    height = height - $canvas.offset().top - 83;
+    height = height - $canvas.offset().top - 60;
 
     $canvas.css('height', height);
   },
