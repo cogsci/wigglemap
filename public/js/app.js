@@ -335,7 +335,14 @@ Diana.prototype = {
   /* Calculate the number of feet needed to climb from point A to point B */
   calcElevations: function() {
     var self = this;
-    this.serviceCall('get_elevations_list', {steps: JSON.stringify(self.routeSteps)}, function(data) {
+
+    // Only want to send the start and end points to the server to calculate
+    // the total climb.
+    var start_and_end_points = [];
+    start_and_end_points.push(this.routeSteps[0]);
+    start_and_end_points.push(this.routeSteps[this.routeSteps.length - 1]);
+
+    this.serviceCall('get_elevations_list', {steps: JSON.stringify(start_and_end_points)}, function(data) {
       self.elevations = data;
       self.updateTotalClimb();
     }, {mimeType: 'application/json;charset=UTF-8'});

@@ -33,7 +33,19 @@ end
 post '/get_elevations_list' do
     content_type :JSON
     route_steps = JSON.parse(params['steps'])
-    get_elevations(route_steps).to_json
+    
+    # get_elevations(route_steps).to_json
+
+    start_location_coords = route_steps[0]['start_location']
+    end_location_coords = route_steps[1]['end_location']
+
+    start_lat = start_location_coords['lat']
+    start_lon = start_location_coords['lon']
+
+    end_lat = end_location_coords['lat']
+    end_lon = end_location_coords['lon']
+
+    [get_climb(start_lat, start_lon, end_lat, end_lon)].to_json
 end
 
 post '/get_accident_counts' do
