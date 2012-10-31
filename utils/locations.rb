@@ -10,14 +10,16 @@ def get_address(lat,lon)
 
     cached_location = nil
 
-    begin 
-        uri = URI.parse("redis://teamfordiana:762434c9baa0934e21de1af5bf8c10c4@herring.redistogo.com:10078")
-        redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
-#        redis = Redis.new  # err, should do this elsewhere?
-        
-    rescue Exception => e
-        print "redis-server is not running\n"
-        # redis-server probabably isn't running
+    unless DISABLE_REDIS
+        begin 
+            uri = URI.parse("redis://teamfordiana:762434c9baa0934e21de1af5bf8c10c4@herring.redistogo.com:10078")
+            redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+    #        redis = Redis.new  # err, should do this elsewhere?
+            
+        rescue Exception => e
+            print "redis-server is not running\n"
+            # redis-server probabably isn't running
+        end
     end
 
     coords = lat.to_s + "," + lon.to_s

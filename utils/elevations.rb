@@ -30,13 +30,16 @@ end
 def get_elevation(lat, lon)
 
     redis = nil
-    redis_key = "elevation:" + lat.to_s + ":" + lon.to_s
-    begin
-        uri = URI.parse("redis://teamfordiana:762434c9baa0934e21de1af5bf8c10c4@herring.redistogo.com:10078")
-        redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
-        #redis = Redis.new
-    rescue
-        # no redis installed
+
+    unless DISABLE_REDIS
+        redis_key = "elevation:" + lat.to_s + ":" + lon.to_s
+        begin
+            uri = URI.parse("redis://teamfordiana:762434c9baa0934e21de1af5bf8c10c4@herring.redistogo.com:10078")
+            redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+            #redis = Redis.new
+        rescue
+            # no redis installed
+        end
     end
 
     unless redis.nil?

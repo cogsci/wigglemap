@@ -18,6 +18,11 @@ Geokit::Geocoders::google = 'AIzaSyB7TqXugzqy78MGZeCajJKldKeJd8CBj9I'
 # Load up Mongoid config
 Mongoid.load!("config/mongoid.yml", :production)
 
+# This flag should really be in a config file once we summon
+# the strength to create one. Setting this to true disables
+# redis caching.
+DISABLE_REDIS = true
+
 # AJAX method for getting the crime couunts for a specific route.
 post '/get_crime_counts' do
     content_type :JSON
