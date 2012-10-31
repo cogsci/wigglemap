@@ -139,7 +139,9 @@ Diana.prototype = {
             'padding': 0
           });
 
+      // fucking hacks
       $('.masthead').css('padding-bottom', '54px');
+      $('.masthead').css('height', '135px');
 
 
       // @TODO: Only occur once, convert to function with above calls to some
