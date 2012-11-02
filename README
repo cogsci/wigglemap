@@ -1,10 +1,18 @@
 Repo for reroute hackathon: http://hattery.com/reroute/
 
+See the app at: http://wigglemap.com
+
 To begin:
 1. Install dependencies (see below)
-2. ruby app.rb
-3. http://localhost:4567
+2. Start mongod and redis
+3. ruby app.rb
+4. http://localhost:4567
+5. Congrats, you should be up and running!
+
+Dependencies: 
+- Ruby 1.9+ (lion comes with 1.8.7)
+- Install Ruby Gems
+- Install gems (will install: - geokit, mongo, mongoid, json, bson_ext, sinatra, redis, nokogiri, rest-client, geocoder, open-uri)
+  bundle install
 
 
-Dependencies: (todo: setup a Gemfile)
-- geokit, mongo, mongoid, json, bson_ext, sinatra, redis
