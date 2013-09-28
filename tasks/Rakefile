@@ -26,7 +26,7 @@ task :scrape do
   f = File.open("accidents.json", "w")
   f.write("[")
   (1..45).to_a.each do |page_count|
-    page = RestClient.get "http://www.baycitizen.org/data/bike-accidents/raw-data/?page=#{page_count}&date_from=20050101&date_to=20091231&county=87"
+    page = RestClient.get "http://secret-taiga-2483.herokuapp.com/data/bike-accidents/raw-data/?page=#{page_count}&date_from=20050101&date_to=20091231&county=87"
     n_page = Nokogiri::HTML.parse(page)
 
     header = n_page.css("thead").children[0]
