@@ -7,7 +7,7 @@ require 'geokit'
 $db = Mongo::Connection.new(ENV["HACKATHON_REROUTE_MONGO_SERVER"], ENV["HACKATHON_REROUTE_MONGO_PORT"])["hackathon_reroute"]
 begin
   $auth = $db.authenticate(ENV["HACKATHON_REROUTE_MONGO_USERNAME"], ENV["HACKATHON_REROUTE_MONGO_PASSWORD"])
-rescue 
+rescue
   #do nothing for now
 end
 puts $db
@@ -28,7 +28,6 @@ task :scrape do
   (1..45).to_a.each do |page_count|
     page = RestClient.get "http://www.baycitizen.org/data/bike-accidents/raw-data/?page=#{page_count}&date_from=20050101&date_to=20091231&county=87"
     n_page = Nokogiri::HTML.parse(page)
-  #  n_page.css("
 
     header = n_page.css("thead").children[0]
 

@@ -10,7 +10,7 @@ def get_crime_counts(route_steps)
     crimes = []
 
     route_steps.each do |step|
-        
+
         start_location_coords = step['start_location']
         end_location_coords = step['end_location']
 

@@ -33,7 +33,7 @@ end
 post '/get_elevations_list' do
     content_type :JSON
     route_steps = JSON.parse(params['steps'])
-    
+
     # get_elevations(route_steps).to_json
 
     start_location_coords = route_steps[0]['start_location']

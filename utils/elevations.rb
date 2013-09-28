@@ -4,7 +4,7 @@ def get_elevations(route_steps)
     elevations = []
 
     route_steps.each do |step|
-        
+
         start_location_coords = step['start_location']
         end_location_coords = step['end_location']
 

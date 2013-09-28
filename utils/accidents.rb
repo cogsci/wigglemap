@@ -8,7 +8,7 @@ require 'geokit'
 $db = Mongo::Connection.new(ENV["HACKATHON_REROUTE_MONGO_SERVER"], ENV["HACKATHON_REROUTE_MONGO_PORT"])["hackathon_reroute"]
 begin
   $auth = $db.authenticate(ENV["HACKATHON_REROUTE_MONGO_USERNAME"], ENV["HACKATHON_REROUTE_MONGO_PASSWORD"])
-rescue 
+rescue
   #do nothing for now
 end
 
