@@ -12,8 +12,6 @@ GEM
       bson (~> 1.7.0)
     builder (3.0.4)
     geocoder (1.1.4)
-    geokit (1.6.5)
-      multi_json
     i18n (0.6.1)
     json (1.7.5)
     mime-types (1.19)
@@ -47,7 +45,6 @@ PLATFORMS
 DEPENDENCIES
   bson_ext
   geocoder
-  geokit
   json
   mongo
   mongoid
