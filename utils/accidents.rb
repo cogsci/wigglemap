@@ -3,7 +3,6 @@ require 'rest-client'
 require 'json'
 require 'geocoder'
 require 'mongo'
-require 'geokit'
 
 $db = Mongo::Connection.new(ENV["HACKATHON_REROUTE_MONGO_SERVER"], ENV["HACKATHON_REROUTE_MONGO_PORT"])["hackathon_reroute"]
 begin

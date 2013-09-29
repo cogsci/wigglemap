@@ -14,7 +14,7 @@ To begin:
 Dependencies:
 - Ruby 1.9+ (lion comes with 1.8.7)
 - Install Ruby Gems
-- Install gems (will install: - geokit, mongo, mongoid, json, bson_ext, sinatra, redis, nokogiri, rest-client, geocoder, open-uri)
+- Install gems (will install: - mongo, mongoid, json, bson_ext, sinatra, redis, nokogiri, rest-client, geocoder, open-uri)
   bundle install
 
 

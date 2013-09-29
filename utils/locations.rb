@@ -1,6 +1,5 @@
 require 'redis'
 require 'json'
-require 'geokit'
 require 'api_call'
 
 # utility methods related to geocoding and shit
