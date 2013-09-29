@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'sinatra'
-require 'geokit'
 require 'mongoid'
 
 # Add directories to the load path
@@ -11,9 +10,6 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'utils'))
 require 'crimes'
 require 'elevations'
 require 'accidents'
-
-# Google Maps API configuration
-Geokit::Geocoders::google = 'AIzaSyB7TqXugzqy78MGZeCajJKldKeJd8CBj9I'
 
 # Load up Mongoid config
 Mongoid.load!("config/mongoid.yml", :production)

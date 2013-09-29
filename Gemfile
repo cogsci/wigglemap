@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
-gem 'geokit'
 gem 'mongoid'
 gem 'nokogiri'
 gem 'rest-client'

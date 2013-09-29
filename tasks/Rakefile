@@ -2,7 +2,7 @@ require 'mongo'
 require 'rest-client'
 require 'nokogiri'
 require 'json'
-require 'geokit'
+require 'geocoder'
 
 $db = Mongo::Connection.new(ENV["HACKATHON_REROUTE_MONGO_SERVER"], ENV["HACKATHON_REROUTE_MONGO_PORT"])["hackathon_reroute"]
 begin
@@ -53,19 +53,16 @@ task :geocode do
   jsons = JSON.parse(json)
   count = 0
   jsons.each_with_index do |json, index|
-#    if index > 1797
-      query = "#{json["Street1"]} and #{json["Street2"]}, San Francisco"
-      #result = Geocoder.search(query)
-      result = Geokit::Geocoders::GoogleGeocoder.geocode(query)
-      if result
-        #json.merge!(result[0].data["geometry"]["location"])
-        json.merge!({"lat" => result.lat, "lng" => result.lng})
-        f.write(json.to_json + ",\n")
-        puts query
-        puts json
-        sleep(0.75)
-      end
-#    end
+    query = "#{json["Street1"]} and #{json["Street2"]}, San Francisco"
+    result = Geocoder.search(query)
+    if result
+      puts result
+      json.merge!(result[0].data["geometry"]["location"])
+      f.write(json.to_json + ",\n")
+      puts query
+      puts json
+      sleep(0.75)
+    end
   end
 
   f.write("]")
@@ -75,7 +72,6 @@ end
 desc "Populate accident data to database"
 task :populate do
   jsons = JSON.parse(File.read("accidents_geocoded.json"))
-#  jsons = JSON.parse(File.read("test_accidents.json"))
   coll = $db["accidents"]
   coll.drop
   jsons.each do |json|
