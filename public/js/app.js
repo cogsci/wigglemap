@@ -28,7 +28,7 @@ var Diana = function() {
   this.map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
   var bikeLayer = new google.maps.BicyclingLayer();
   bikeLayer.setMap(this.map);
-  
+
   // Hacks, trigger resize since we have a transition on the height of the
   // container.
   // @TODO: Add transition via class after map instantiation
@@ -90,7 +90,7 @@ Diana.prototype = {
 
   initStreetView: function() {
     var firstStep = this.overviewPath[0];
-    
+
     this.streetview = new google.maps.StreetViewPanorama(document.getElementById('streetview'));
     this.map.setStreetView(this.streetview);
     routeHelper.jumpToVertex(0);
@@ -117,7 +117,7 @@ Diana.prototype = {
     // New route submit
     $('#locations').on('submit', function(e) {
       e.preventDefault();
-      
+
       var start = self.getStartLocation(),
         end = self.getEndLocation();
 
@@ -251,7 +251,6 @@ Diana.prototype = {
   },
 
   updateRouteInfo: function() {
-
     var routeInfo = {
       time: this.directionsDisplay.getDirections().routes[0].legs[0].duration.text,
       distance: this.directionsDisplay.getDirections().routes[0].legs[0].distance.text,
@@ -283,30 +282,29 @@ Diana.prototype = {
    */
 
   updateRouteSteps: function() {
-      this.rawSteps = this.directionsDisplay.getDirections().routes[0].legs[0].steps;
-
+    var steps = this.directionsDisplay.getDirections().routes[0].legs[0].steps,
+        routeSteps = [],
+        step;
     try {
-      var fullSteps = this.rawSteps;
-      var step;
-      var routeSteps = [];
-      for (i in fullSteps) {
-        step = fullSteps[i];
+      for (var i = 0; i < steps.length; i++) {
+        step = steps[i];
         routeSteps.push({
           start_location: {
-            lat: step.start_location.Ya,
-            lon: step.start_location.Za
+            lat: step.start_location.nb,
+            lon: step.start_location.ob
           },
           end_location: {
-            lat: step.end_location.Ya,
-            lon: step.end_location.Za
+            lat: step.end_location.nb,
+            lon: step.end_location.ob
           },
-          estimate_distance: (Math.abs(step.end_location.Ya - step.start_location.Ya) + Math.abs(step.end_location.Za - step.start_location.Za))
+          estimate_distance: step.distance.value
         });
       }
-      this.routeSteps = routeSteps;
+      return this.routeSteps = routeSteps;
     } catch (err) {
       // likely an NPE
-      console.log(err);
+      console.warn('updateRouteSteps Error: ', err);
+      return err;
     }
   },
 
@@ -451,5 +449,5 @@ Diana.prototype = {
 
 
 $(function() {
-    diana = new Diana();
+  diana = new Diana();
 });

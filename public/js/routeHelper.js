@@ -125,7 +125,7 @@ var routeHelper = {
 
   jumpToPrevVertex: function() {
      if (nextVertexId == 1) return false;
-     this.jumpToVertex(nextVertexId - 2); 
+     this.jumpToVertex(nextVertexId - 2);
   },
 
 
@@ -141,10 +141,10 @@ var routeHelper = {
    $currentStep.addClass("highlighted");
   },
   findClosestVertexByPathNum: function(pathNum) {
-    var closest = {Ya: 0, Za: 0};
+    var closest = {nb: 0, ob: 0};
     var closestIdx = -1;
     var steps = diana.currentRoute.routes[0].legs[0].steps;
-    var starting_point = {Ya: steps[pathNum].start_location.lat(), Za: steps[pathNum].start_location.lng()};
+    var starting_point = {nb: steps[pathNum].start_location.lat(), ob: steps[pathNum].start_location.lng()};
     var i;
     for (i = 0; i < diana.overviewPath.length; i++) {
       if (this.latLngDistance(diana.overviewPath[i], starting_point) < this.latLngDistance(closest, starting_point)) {
@@ -155,7 +155,7 @@ var routeHelper = {
     return closestIdx;
   },
   latLngDistance: function(p1, p2) {
-    return Math.abs(p2["Ya"] - p1["Ya"]) + Math.abs(p2["Za"] - p1["Za"])
+    return Math.abs(p2["nb"] - p1["nb"]) + Math.abs(p2["ob"] - p1["ob"])
   },
   play: function() {
     $('#map_canvas')
@@ -166,7 +166,7 @@ var routeHelper = {
       .removeClass('secondary')
       .addClass('primary');
     google.maps.event.trigger(diana.map, 'resize');
-    
+
     diana.map.setZoom(17);
     this.playing = setInterval(function() {
       // Stop when there is no more vertexes left in the path
